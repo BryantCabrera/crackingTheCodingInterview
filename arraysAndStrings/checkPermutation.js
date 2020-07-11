@@ -6,7 +6,7 @@ const checkPermutation = (str1, str2) => {
 
 	let isPermutation = true;
 
-	// Traverse str1SortedArr linearly and check if the current character matches the character at the same index in str2SortedArr
+	// Traverse str1SortedArr linearly and check if the current character matches the character at the same index in str2SortedArr.
 	for (let i = 0; i < str1SortedArr.length; i++) {
 		if (str1SortedArr[i] !== str2SortedArr[i]) {
 			isPermutation = false;
