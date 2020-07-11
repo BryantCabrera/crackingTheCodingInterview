@@ -5,7 +5,7 @@ const isUnique = (str) => {
 
 	let currentStrIndex = 0;
 	let strIsUnique = true;
-	while (currentStrIndex <= str.length) {
+	while (currentStrIndex < str.length) {
 		if (hashMap[str[currentStrIndex]] !== undefined) {
 			strIsUnique = false;
 			break;
@@ -22,3 +22,19 @@ const sampleInput2 = 'abcde';
 
 console.log(isUnique(sampleInput1));
 console.log(isUnique(sampleInput2));
+
+const isUnique2 = (str) => {
+	let currentStrIndex = 0;
+	let strIsUnique = true;
+	while (currentStrIndex < str.length) {
+		if (str.indexOf(str.charAt(currentStrIndex), currentStrIndex + 1) !== -1) {
+			strIsUnique = false;
+			break;
+		}
+		currentStrIndex++;
+	}
+	return strIsUnique;
+};
+
+console.log(isUnique2(sampleInput1));
+console.log(isUnique2(sampleInput2));
