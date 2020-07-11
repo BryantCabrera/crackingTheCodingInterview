@@ -27,6 +27,7 @@ const isUnique2 = (str) => {
 	let currentStrIndex = 0;
 	let strIsUnique = true;
 	while (currentStrIndex < str.length) {
+		// We search for the current character starting at index immediately after the current character's index.  If that character exists elsewhere in the string, immediately return false.
 		if (str.indexOf(str.charAt(currentStrIndex), currentStrIndex + 1) !== -1) {
 			strIsUnique = false;
 			break;
