@@ -21,5 +21,5 @@ const sampleInput1 = 'aabcadb';
 const sampleInput2 = 'abcde';
 const sampleInput3 = 'ecdba';
 
-console.log(checkPermutation(sampleInput1, sampleInput2));
-console.log(checkPermutation(sampleInput2, sampleInput3));
+console.log(checkPermutation(sampleInput1, sampleInput2)); // Expect: false
+console.log(checkPermutation(sampleInput2, sampleInput3)); // Expect: true

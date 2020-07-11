@@ -11,6 +11,6 @@ const urlify = (str, trueStrLength) => {
 	return strArr.join('');
 };
 
-const input1 = 'Mr John Smith     ';
+const input1 = 'Mr John Smith     '; // Expect: "Mr%20John%20Smith"
 
 console.log(urlify(input1, 13));

@@ -17,11 +17,11 @@ const isUnique = (str) => {
 	return strIsUnique;
 };
 
-const sampleInput1 = 'aabcadb';
-const sampleInput2 = 'abcde';
+const sampleInput1 = 'aabcadb'; // Expect: false
+const sampleInput2 = 'abcde'; // Expect: true
 
-console.log(isUnique(sampleInput1));
-console.log(isUnique(sampleInput2));
+console.log(isUnique(sampleInput1)); // Expect: false
+console.log(isUnique(sampleInput2)); // Expect: true
 
 const isUnique2 = (str) => {
 	let currentStrIndex = 0;
@@ -37,5 +37,5 @@ const isUnique2 = (str) => {
 	return strIsUnique;
 };
 
-console.log(isUnique2(sampleInput1));
-console.log(isUnique2(sampleInput2));
+console.log(isUnique2(sampleInput1)); // Expect: false
+console.log(isUnique2(sampleInput2)); // Expect: true
