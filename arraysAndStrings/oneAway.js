@@ -7,7 +7,6 @@ const oneAway = (str1, str2) => {
 	}
 
 	for (let i = 0; i < str2.length; i++) {
-		// hashMap[str2.charAt(i)] = hashMap[str2.charAt(i)] ? hashMap[str2.charAt(i)] - 1 : 1;
 		if (hashMap[str2.charAt(i)]) {
 			hashMap[str2.charAt(i)] = hashMap[str2.charAt(i)] - 1
 		} else {
@@ -15,8 +14,7 @@ const oneAway = (str1, str2) => {
 		}
 	}
 
-	console.log(hashMap);
-	// There can be at most 2 unique keys with count > 0.
+	// There can be at most 2 unique keys with count > 0.  This is because we want an insertion or removal of 1 character to at most leave 1 unique key, and a replacement to at most leave 2 unique keys.
 	return Object.keys(hashMap).filter(key => hashMap[key] !== 0).length <= 2;
 };
 
