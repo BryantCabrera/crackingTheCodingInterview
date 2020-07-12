@@ -33,7 +33,18 @@ const checkPermutation2 = (str1, str2) => {
 	}
 
 	for (let i = 0; i < str2.length; i++) {
-		hashMap[str2.charAt(i)] = hashMap[str2.charAt(i)] ? hashMap[str2.charAt(i)] - 1 : 1;
+		// hashMap[str2.charAt(i)] = hashMap[str2.charAt(i)] ? hashMap[str2.charAt(i)] - 1 : 1;
+		if (hashMap[str2.charAt(i)]) {
+			hashMap[str2.charAt(i)] = hashMap[str2.charAt(i)] - 1
+		} else {
+			hashMap['str2ExtraChars'] = hashMap['str2ExtraChars'] ? hashMap['str2ExtraChars'] + 1: 1;
+		}
+
+		// if (hashMap[str1.charAt(i)]) {
+		// 	hashMap[str1.charAt(i)]--;
+		// } else {
+		// 	hashMap[str2.charAt(i)] = 1;
+		// }
 	}
 
 	// If the hashMap counts are all 0 for every character, then str2 is a permutation of string 1 because the counts of each letter are the same.
