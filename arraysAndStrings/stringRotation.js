@@ -30,6 +30,11 @@ const stringRotation = (s1, s2) => {
 	}
 };
 
+const stringRotation2 = (s1, s2) => {
+	// If I concatenate s2 to itself, it should contain s1.
+	return isSubstring(`${s2}${s2}`, s1);
+};
+
 const input1 = 'waterbottle';
 const input2 = 'erbottlewat';
 const input3 = 'erbotttlewat';
@@ -43,3 +48,8 @@ console.log(stringRotation(input1, input2));
 console.log(stringRotation(input1, input3));
 console.log(stringRotation(input1, input1));
 console.log(stringRotation(input4, input5));
+
+console.log(stringRotation2(input1, input2));
+console.log(stringRotation2(input1, input3));
+console.log(stringRotation2(input1, input1));
+console.log(stringRotation2(input4, input5));
