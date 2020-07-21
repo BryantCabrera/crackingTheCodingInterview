@@ -6,8 +6,30 @@ const rotateMatrix = (matrix) => {
  let colMin = 0;
  let colMax = matrix[0].length - 1;
 
- // N swaps need to be done N - 1 times.
- let temp;
+//  const swapElements = (currentRow, currentCol, futureRow, futureCol) => {
+// 	// A total of N swaps need to be made.
+// 	let counter = matrix.length;
+
+// 	let temp;
+// 	while (counter !== 0) {
+// 		if (counter === 4) {
+// 			temp = matrix[futureRow][futureCol];
+// 			matrix[futureRow][futureCol] = matrix[currentRow][currentCol];
+// 			currentCol = futureCol;
+// 			futureRow = 
+// 		} else if (counter === 3) {
+// 			currentRow = null;
+// 		} else if (counter === 2) {
+			
+// 		} else if (counter === 1) {
+			
+// 		}
+// 		counter--;
+// 	}
+//  };
+
+ // N swaps need to be done N - 1 times per layer.
+//  let temp;
  for (let i = 0; i < matrix[rowMin].length - 1; i++) {
 	temp = matrix[rowMin][colMax];
 	matrix[rowMin][colMax] = matrix[rowMin][i];
