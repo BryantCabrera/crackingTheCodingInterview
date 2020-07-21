@@ -41,15 +41,15 @@ const input3 = 'erbotttlewat';
 const input4 = 'llama';
 const input5 = 'lamal';
 
-console.log(isSubstring(input1, 'bottle'));
-console.log(isSubstring(input1, 'botttle'));
+console.log(isSubstring(input1, 'bottle')); // Expect: true
+console.log(isSubstring(input1, 'botttle')); // Expect: false
 
-console.log(stringRotation(input1, input2));
-console.log(stringRotation(input1, input3));
-console.log(stringRotation(input1, input1));
-console.log(stringRotation(input4, input5));
+console.log(stringRotation(input1, input2)); // Expect: true
+console.log(stringRotation(input1, input3)); // Expect: false
+console.log(stringRotation(input1, input1)); // Expect: true
+console.log(stringRotation(input4, input5)); // Expect: true
 
-console.log(stringRotation2(input1, input2));
-console.log(stringRotation2(input1, input3));
-console.log(stringRotation2(input1, input1));
-console.log(stringRotation2(input4, input5));
+console.log(stringRotation2(input1, input2)); // Expect: true
+console.log(stringRotation2(input1, input3)); // Expect: false
+console.log(stringRotation2(input1, input1)); // Expect: true
+console.log(stringRotation2(input4, input5)); // Expect: true
