@@ -1,5 +1,6 @@
 // 1.9 String Rotation: Assume you have a method isSubstring which checks if one word is a substring of another.  Given two strings, s1 and s2, write code to check if s2 is a rotation of s1 using only one call to isSubstring (e.g. "waterbottle" is a rotation of "erbottlewat").
 
+// I am assumin tthat isSubstring is a contiguous substring, such that 'wter' will not be considered a substring of 'water' and thus return false.
 const isSubstring = (str, possibleSubstr) => {
 	return str.includes(possibleSubstr);
 };
@@ -26,19 +27,7 @@ const stringRotation = (s1, s2) => {
 		}
 
 		return isSubstring(s1, s2.substring(0, s2Pointer - s1Pointer));
-
-		// for (let i = s2Pivot; i < s2.length; i++) {
-		// 	if (s2[i] !== s1[s1Pointer]) {
-		// 		return false;
-		// 	}
-		// 	s1Pointer++;
-		// }
-
-		// return isSubstring(s1, s2.substring(0, s2Pivot));
 	}
-
-	// // Edge Case: If the words are the same, return true.
-	// if (s1 === s2) return true;
 };
 
 const input1 = 'waterbottle';
