@@ -1,7 +1,10 @@
 // 2.3 Delete Middle Node: Implement an algorithm to delete a node in the middle of a singly linked list, given only access to that node.
 
 const deleteMiddleNode = (singlyLinkedListNode) => {
-
+	// Reassign current node's value to the next node's value.
+	singlyLinkedListNode.value = singlyLinkedListNode.next.value;
+	// Reassign current node's 'next' value to the next node's 'next'.
+	singlyLinkedListNode.next = singlyLinkedListNode.next;
 };
 
 // Implementing/creating a Singly LinkedList for test inputs
@@ -64,6 +67,7 @@ while (input1.size() < input1Values.length) {
 }
 
 deleteMiddleNode(input1.head.next.next); // Given SinglyLinkedListNode('c') as the input.
+console.log(input1.size()); // Expect: 4.
 console.log(input1.head.next.value); // Expect: 'b'.
 console.log(input1.head.next.next.value); // Expect: 'd'.
 
@@ -76,5 +80,6 @@ while (input2.size() < input2Values.length) {
 }
 
 deleteMiddleNode(input2.head.next); // Given SinglyLinkedListNode('b') as the input.
-console.log(input2.head.next.value); // Expect: 'a'.
-console.log(input2.head.next.next.value); // Expect: 'c'.
+console.log(input2.size()); // Expect: 3.
+console.log(input2.head.value); // Expect: 'a'.
+console.log(input2.head.next.value); // Expect: 'c'.
