@@ -1,7 +1,7 @@
 // 2.2 Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list.
 
-const returnKthToLast = (linkedList) => {
-	let currentNode = linkedList.head;
+const returnKthToLast = (singlyLinkedList) => {
+	let currentNode = singlyLinkedList.head;
 	while (currentNode.next !== null) {
 		// When the next node is null, setting currentNode to null will terminate the while loop.
 		currentNode = currentNode.next;
