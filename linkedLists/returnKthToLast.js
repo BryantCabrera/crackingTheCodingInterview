@@ -10,8 +10,8 @@ const returnKthToLast = (linkedList) => {
 	return `currentNode: ${currentNode}, currentNode's value: ${currentNode.value}`;
 };
 
-// Implementing/creating a LinkedList for test inputs
-class LinkedList {
+// Implementing/creating a SinglyLinkedList for test inputs
+class SinglyLinkedList {
 	// If the head value is not passed, the head is initialized to null.
 	constructor (head = null) {
 		this.head = head;
@@ -54,7 +54,7 @@ class LinkedList {
 	}
 }
 
-class LinkedListNode {
+class SinglyLinkedListNode {
 	constructor(value) {
 		this.value = value;
 		this.next = null;
@@ -62,10 +62,10 @@ class LinkedListNode {
 }
 
 const input1Values = [4, 1, 3, 4, 2, 3, 3, 4, 4, 5];
-const input1 = new LinkedList(new LinkedListNode(2));
+const input1 = new SinglyLinkedList(new SinglyLinkedListNode(2));
 let valuePointer = 0;
 while (input1.size() < input1Values.length) {
-	input1.getLast().next = new LinkedListNode(input1Values[valuePointer]);
+	input1.getLast().next = new SinglyLinkedListNode(input1Values[valuePointer]);
 	valuePointer++;
 }
 

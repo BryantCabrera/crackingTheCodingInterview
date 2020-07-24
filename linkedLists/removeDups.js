@@ -1,7 +1,7 @@
 // 2.1 Remove Dups: Write code to remove duplicates from an unsorted linked list.
 
 const removeDups = (linkedList) => {
-	// Set currentNode to head of LinkedList.
+	// Set currentNode to head of SinglyLinkedList.
 	let currentNode = linkedList.head;
 	// Because we investigate the currentNode.next, we have to initialize the hashMap with the head's value.
 	const hashMap = {
@@ -12,12 +12,12 @@ const removeDups = (linkedList) => {
 	while (currentNode !== null) {
 		if (currentNode.next !== null) {
 			if (hashMap[currentNode.next.value]) {
-				// If the hashMap contains the value of the next node, it is a duplicate.  So, remove it from the LinkedList by setting currentNode's 'next' to the next node's 'next'.
+				// If the hashMap contains the value of the next node, it is a duplicate.  So, remove it from the SinglyLinkedList by setting currentNode's 'next' to the next node's 'next'.
 				currentNode.next = currentNode.next.next;
 			} else {
 				// If the next node's value is not in the hashMap, it is the first instance of that node, so add it to the hashMap.
 				hashMap[currentNode.next.value] = 1;
-				// Continue traversing the rest of the LinkedList without modification.
+				// Continue traversing the rest of the SinglyLinkedList without modification.
 				currentNode = currentNode.next;
 			}
 		} else {
@@ -27,8 +27,8 @@ const removeDups = (linkedList) => {
 	}
 };
 
-// Implementing/creating a LinkedList for test inputs
-class LinkedList {
+// Implementing/creating a SinglyLinkedList for test inputs
+class SinglyLinkedList {
 	// If the head value is not passed, the head is initialized to null.
 	constructor (head = null) {
 		this.head = head;
@@ -71,7 +71,7 @@ class LinkedList {
 	}
 }
 
-class LinkedListNode {
+class SinglyLinkedListNode {
 	constructor(value) {
 		this.value = value;
 		this.next = null;
@@ -79,12 +79,12 @@ class LinkedListNode {
 }
 
 const input1Values = [4, 1, 3, 4, 2, 3, 3, 4, 4];
-const input1 = new LinkedList(new LinkedListNode(2));
+const input1 = new SinglyLinkedList(new SinglyLinkedListNode(2));
 let valuePointer = 0;
 while (input1.size() < input1Values.length) {
-	input1.getLast().next = new LinkedListNode(input1Values[valuePointer]);
+	input1.getLast().next = new SinglyLinkedListNode(input1Values[valuePointer]);
 	valuePointer++;
 }
 
-console.log(removeDups(input1)); // Expect LinkedList to be: 2 -> 4 -> 1 -> 3
+console.log(removeDups(input1)); // Expect SinglyLinkedList to be: 2 -> 4 -> 1 -> 3
 console.log(input1.size()); // Expect: 4
