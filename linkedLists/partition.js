@@ -1,1 +1,95 @@
 // 2.4 Partition: Write code to partition a linked list around a value x, such that all nodes less than x come before all nodes greater than or equal to x.  If x is contained within the list, the values of x only need to be after the elements less than x.
+
+const partition = (singlyLinkedList, partitionValue) => {
+
+};
+
+// Implementing/creating a Singly LinkedList for test inputs
+class SinglyLinkedList {
+	// If the head value is not passed, the head is initialized to null.
+	constructor (head = null) {
+		this.head = head;
+	}
+
+	// Returns the number of nodes in the linked list.
+	size () {
+		let count = 0;
+		let node = this.head;
+
+		while (node) {
+			count++;
+			node = node.next;
+		}
+
+		return count;
+	}
+
+	// Empties out the list.
+	clear () {
+		this.head = null;
+	}
+
+	// Returns the first node of the linked list.
+	getFirst () {
+		return this.head;
+	}
+
+	// Returns the last node of the linked list.
+	getLast () {
+		let lastNode = this.head;
+		
+		if (lastNode) {
+			while (lastNode.next) {
+				lastNode = lastNode.next;
+			}
+		}
+
+		return lastNode
+	}
+}
+
+class SinglyLinkedListNode {
+	constructor(value) {
+		this.value = value;
+		this.next = null;
+	}
+}
+
+const input1Values = [4, 1, 3, 4, 2, 3, 3, 4, 4];
+const input1 = new SinglyLinkedList(new SinglyLinkedListNode(2));
+let valuePointer1 = 0;
+while (input1.size() < input1Values.length) {
+	input1.getLast().next = new SinglyLinkedListNode(input1Values[valuePointer1]);
+	valuePointer1++;
+}
+
+partition(input1, 1); // Given value 1 as the partition.
+console.log(input1.size()); // Expect: 10.
+console.log(input1.head); // Expect: 2-> 1 -> 4 -> 3 -> 4 -> 2 -> 3 -> 3 -> 4 -> 4.
+
+
+const input2Values = [4, 1, 3, 4, 2, 3, 3, 4, 4];
+const input2 = new SinglyLinkedList(new SinglyLinkedListNode('a'));
+let valuePointer2 = 0;
+while (input2.size() < input2Values.length) {
+	input2.getLast().next = new SinglyLinkedListNode(input2Values[valuePointer2]);
+	valuePointer2++;
+}
+
+partition(input2, 4); // Given value 4 as the partition.
+console.log(input2.size()); // Expect: 10.
+console.log(input2.head.value); // Expect: 2 -> 1 -> 3 -> 2 -> 3 -> 3 -> 4 -> 4 -> 4 -> 4.
+
+
+
+const input3Values = [4, 1, 4, 2, 4, 4];
+const input3 = new SinglyLinkedList(new SinglyLinkedListNode('a'));
+let valuePointer3 = 0;
+while (input3.size() < input3Values.length) {
+	input3.getLast().next = new SinglyLinkedListNode(input3Values[valuePointer3]);
+	valuePointer3++;
+}
+
+partition(input3, 3); // Given value 3 as the partition.
+console.log(input3.size()); // Expect: 7.
+console.log(input3.head.value); // Expect: 2 -> 1 -> 2 -> 4 -> 4 -> 4 -> 4.
