@@ -1,29 +1,22 @@
 // 2.1 Remove Dups: Write code to remove duplicates from an unsorted linked list.
 
 const removeDups = (linkedList) => {
+	// Set currentNode to head of LinkedList
 	let currentNode = linkedList.head;
+	// Because we investigate the currentNode.next, we have to initialize the hashMap with the head's value
 	const hashMap = {
 		[currentNode.value]: 1
 	};
-	// const hashMap = {};
 
+	// We are checking currentNode.next so that we can edit the next pointer of the currentNode since this is a singly-linked list and we won't be able to traverse back up to the previousNode to make necessary edits
 	while (currentNode !== null) {
 		if (currentNode.next !== null) {
 			if (hashMap[currentNode.next.value]) {
-				console.log(`present in hash: ${currentNode.next.value}`);
-				// console.log('currentNode.next.value', currentNode.next.value);
-				console.log(currentNode.next.value, 'before');
 				currentNode.next = currentNode.next.next;
-				console.log(currentNode.next, 'after');
-				// console.log('currentNode.next.value', currentNode.next.value);
 			} else {
-				console.log(`not present in hash, leaving in linkedList: ${currentNode.next.value}`);
 				hashMap[currentNode.next.value] = 1;
-				// console.log(`hashMap: ${hashMap}`);
-				// console.log(`hashMap[currentNode.next.value] ${currentNode.next.value}: ${hashMap[currentNode.next.value]}`);
 				currentNode = currentNode.next;
 			}
-			console.log(currentNode, 'currentNode');
 		} else {
 			currentNode = currentNode.next;
 		}
