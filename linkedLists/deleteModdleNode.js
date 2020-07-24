@@ -55,12 +55,26 @@ class SinglyLinkedListNode {
 	}
 }
 
-const input1Values = [4, 1, 3, 4, 2, 3, 3, 4, 4, 5];
-const input1 = new SinglyLinkedList(new SinglyLinkedListNode(2));
-let valuePointer = 0;
+const input1Values = ['b', 'c', 'd', 'e'];
+const input1 = new SinglyLinkedList(new SinglyLinkedListNode('a'));
+let valuePointer1 = 0;
 while (input1.size() < input1Values.length) {
-	input1.getLast().next = new SinglyLinkedListNode(input1Values[valuePointer]);
-	valuePointer++;
+	input1.getLast().next = new SinglyLinkedListNode(input1Values[valuePointer1]);
+	valuePointer1++;
 }
 
-console.log(returnKthToLast(input1)); // Expect: Node(4).
+deleteMiddleNode(input1.head.next.next); // Given SinglyLinkedListNode('c') as the input.
+console.log(input1.head.next.value); // Expect: 'b'.
+console.log(input1.head.next.next.value); // Expect: 'd'.
+
+const input2Values = ['b', 'c', 'd'];
+const input2 = new SinglyLinkedList(new SinglyLinkedListNode('a'));
+let valuePointer2 = 0;
+while (input2.size() < input2Values.length) {
+	input2.getLast().next = new SinglyLinkedListNode(input2Values[valuePointer2]);
+	valuePointer2++;
+}
+
+deleteMiddleNode(input2.head.next); // Given SinglyLinkedListNode('b') as the input.
+console.log(input2.head.next.value); // Expect: 'a'.
+console.log(input2.head.next.next.value); // Expect: 'c'.
