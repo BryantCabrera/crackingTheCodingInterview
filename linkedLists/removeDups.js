@@ -81,7 +81,6 @@ while (input1.size() < input1Values.length) {
 	input1.getLast().next = new LinkedListNode(input1Values[valuePointer]);
 	valuePointer++;
 }
-// console.log(`input1: ${input1.head.next.value}`);
 
 console.log(removeDups(input1)); // Expect LinkedList to be: 2 -> 4 -> 1 -> 3
 console.log(input1.size()); // Expect: 4
