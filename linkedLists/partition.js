@@ -1,7 +1,53 @@
 // 2.4 Partition: Write code to partition a linked list around a value x, such that all nodes less than x come before all nodes greater than or equal to x.  If x is contained within the list, the values of x only need to be after the elements less than x.
 
 const partition = (singlyLinkedList, partitionValue) => {
+	const lessThanPartition = [];
+	const equalToPartition = [];
+	const greaterThanPartition = [];
 
+	let currentNode = singlyLinkedList.head;
+	while (currentNode !== null) {
+		if (currentNode.value < partitionValue) {
+			lessThanPartition.push(currentNode.value);
+		} else if (currentNode.value === partitionValue) {
+			equalToPartition.push(currentNode.value);
+		} else if (currentNode.value > partitionValue) {
+			greaterThanPartition.push(currentNode.value);
+		}
+		
+		currentNode = currentNode.next;
+	}
+
+	console.log(`lessThanPartition: ${lessThanPartition}`);
+	console.log(`equalToPartition: ${equalToPartition}`);
+	console.log(`greaterThanPartition: ${greaterThanPartition}`);
+	let partitionedLinkedList = new SinglyLinkedList(new SinglyLinkedListNode(null));
+	let currentNode2 = partitionedLinkedList.head;
+	while (lessThanPartition.length) {
+		if (currentNode2.value === null) {
+			currentNode2.value = lessThanPartition[0];
+		} else {
+			currentNode2.next = new SinglyLinkedListNode(lessThanPartition.shift());
+		}
+	}
+
+	while (equalToPartition.length) {
+		if (currentNode2.value === null) {
+			currentNode2.value = equalToPartition[0];
+		} else {
+			currentNode2.next = new SinglyLinkedListNode(equalToPartition.shift());
+		}
+	}
+
+	while (greaterThanPartition.length) {
+		if (currentNode2.value === null) {
+			currentNode2.value = greaterThanPartition[0];
+		} else {
+			currentNode2.next = new SinglyLinkedListNode(greaterThanPartition.shift());
+		}
+	}
+
+	return partitionedLinkedList;
 };
 
 // Implementing/creating a Singly LinkedList for test inputs
@@ -63,33 +109,33 @@ while (input1.size() < input1Values.length) {
 	valuePointer1++;
 }
 
-partition(input1, 1); // Given value 1 as the partition.
-console.log(input1.size()); // Expect: 10.
-console.log(input1.head); // Expect: 2-> 1 -> 4 -> 3 -> 4 -> 2 -> 3 -> 3 -> 4 -> 4.
+const output1 = partition(input1, 1); // Given value 1 as the partition.
+console.log(output1.size()); // Expect: 10.
+console.log(output1.head); // Expect: 2-> 1 -> 4 -> 3 -> 4 -> 2 -> 3 -> 3 -> 4 -> 4.
 
 
 const input2Values = [4, 1, 3, 4, 2, 3, 3, 4, 4];
-const input2 = new SinglyLinkedList(new SinglyLinkedListNode('a'));
+const input2 = new SinglyLinkedList(new SinglyLinkedListNode(2));
 let valuePointer2 = 0;
 while (input2.size() < input2Values.length) {
 	input2.getLast().next = new SinglyLinkedListNode(input2Values[valuePointer2]);
 	valuePointer2++;
 }
 
-partition(input2, 4); // Given value 4 as the partition.
-console.log(input2.size()); // Expect: 10.
-console.log(input2.head.value); // Expect: 2 -> 1 -> 3 -> 2 -> 3 -> 3 -> 4 -> 4 -> 4 -> 4.
+const output2 = partition(input2, 4); // Given value 4 as the partition.
+console.log(output2.size()); // Expect: 10.
+console.log(output2.head); // Expect: 2 -> 1 -> 3 -> 2 -> 3 -> 3 -> 4 -> 4 -> 4 -> 4.
 
 
 
 const input3Values = [4, 1, 4, 2, 4, 4];
-const input3 = new SinglyLinkedList(new SinglyLinkedListNode('a'));
+const input3 = new SinglyLinkedList(new SinglyLinkedListNode(2));
 let valuePointer3 = 0;
 while (input3.size() < input3Values.length) {
 	input3.getLast().next = new SinglyLinkedListNode(input3Values[valuePointer3]);
 	valuePointer3++;
 }
 
-partition(input3, 3); // Given value 3 as the partition.
-console.log(input3.size()); // Expect: 7.
-console.log(input3.head.value); // Expect: 2 -> 1 -> 2 -> 4 -> 4 -> 4 -> 4.
+const output3 = partition(input3, 3); // Given value 3 as the partition.
+console.log(output3.size()); // Expect: 7.
+console.log(output3.head); // Expect: 2 -> 1 -> 2 -> 4 -> 4 -> 4 -> 4.
