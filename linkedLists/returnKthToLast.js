@@ -1,26 +1,7 @@
 // 2.2 Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list
 
-const removeDups = (linkedList) => {
-	// Set currentNode to head of LinkedList
-	let currentNode = linkedList.head;
-	// Because we investigate the currentNode.next, we have to initialize the hashMap with the head's value
-	const hashMap = {
-		[currentNode.value]: 1
-	};
+const returnKthToLast = (linkedList) => {
 
-	// We are checking currentNode.next so that we can edit the next pointer of the currentNode since this is a singly-linked list and we won't be able to traverse back up to the previousNode to make necessary edits
-	while (currentNode !== null) {
-		if (currentNode.next !== null) {
-			if (hashMap[currentNode.next.value]) {
-				currentNode.next = currentNode.next.next;
-			} else {
-				hashMap[currentNode.next.value] = 1;
-				currentNode = currentNode.next;
-			}
-		} else {
-			currentNode = currentNode.next;
-		}
-	}
 };
 
 // Implementing/creating a LinkedList for test inputs
@@ -82,5 +63,4 @@ while (input1.size() < input1Values.length) {
 	valuePointer++;
 }
 
-console.log(removeDups(input1)); // Expect LinkedList to be: 2 -> 4 -> 1 -> 3
-console.log(input1.size()); // Expect: 4
+console.log(returnKthToLast(input1)); // Expect Node(4)
