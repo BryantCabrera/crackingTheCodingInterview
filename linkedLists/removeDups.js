@@ -1,7 +1,33 @@
 // 2.1 Remove Dups: Write code to remove duplicates from an unsorted linked list.
 
 const removeDups = (linkedList) => {
+	let currentNode = linkedList.head;
+	const hashMap = {
+		[currentNode.value]: 1
+	};
+	// const hashMap = {};
 
+	while (currentNode !== null) {
+		if (currentNode.next !== null) {
+			if (hashMap[currentNode.next.value]) {
+				console.log(`present in hash: ${currentNode.next.value}`);
+				// console.log('currentNode.next.value', currentNode.next.value);
+				console.log(currentNode.next.value, 'before');
+				currentNode.next = currentNode.next.next;
+				console.log(currentNode.next, 'after');
+				// console.log('currentNode.next.value', currentNode.next.value);
+			} else {
+				console.log(`not present in hash, leaving in linkedList: ${currentNode.next.value}`);
+				hashMap[currentNode.next.value] = 1;
+				// console.log(`hashMap: ${hashMap}`);
+				// console.log(`hashMap[currentNode.next.value] ${currentNode.next.value}: ${hashMap[currentNode.next.value]}`);
+				currentNode = currentNode.next;
+			}
+			console.log(currentNode, 'currentNode');
+		} else {
+			currentNode = currentNode.next;
+		}
+	}
 };
 
 // Implementing/creating a LinkedList for test inputs
@@ -33,7 +59,7 @@ class LinkedList {
 	getFirst () {
 		return this.head;
 	}
-	
+
 	// Returns the last node of the linked list.
 	getLast () {
 		let lastNode = this.head;
@@ -55,5 +81,14 @@ class LinkedListNode {
 	}
 }
 
+const input1Values = [4, 1, 3, 4, 2, 3, 3, 4, 4];
+const input1 = new LinkedList(new LinkedListNode(2));
+let valuePointer = 0;
+while (input1.size() < input1Values.length) {
+	input1.getLast().next = new LinkedListNode(input1Values[valuePointer]);
+	valuePointer++;
+}
+// console.log(`input1: ${input1.head.next.value}`);
 
-const input1 = new LinkedList(node1);
+console.log(removeDups(input1)); // Expect LinkedList to be: 2 -> 4 -> 1 -> 3
+console.log(input1.size()); // Expect: 4
