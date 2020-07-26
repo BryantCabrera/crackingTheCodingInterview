@@ -1,7 +1,33 @@
 // 2.6 Palindrome: Implement a function to check if a linked list is a palindrome.
 
-const palindrome = (singlyLinkedList1, singlyLinkedList2) => {
+const palindrome = (singlyLinkedList) => {
+	let currentNode = singlyLinkedList.head;
+	const nodeArr = [];
+	while (currentNode) {
+		nodeArr.push(currentNode.value);
+		currentNode = currentNode.next;
+	}
+	
+	const isPalindrome = (arr) => {
+		let pointerForward = 0;
+		let pointerBackward = arr.length - 1;
 
+		while (pointerForward < pointerBackward) {
+			// If the arr has an even number of elements, the middle 2 elements will be checked against each other.
+			// If the arr has an off number of elements, the pointers will point to the same element and this check will still run.
+			if (arr[pointerForward] !== arr[pointerBackward]) {
+				// If we find a mismatch, break out of the loop and return false.
+				return false;
+			}
+
+			pointerForward++;
+			pointerBackward--;
+		}
+
+		return true;
+	};
+
+	return isPalindrome(nodeArr);
 };
 
 // Implementing/creating a Singly LinkedList for test inputs
@@ -74,7 +100,7 @@ while (input2.size() < input2Values.length + 1) {
 	valuePointer2++;
 }
 
-console.log(palindrome(input1)); // Expect: false.
+console.log(palindrome(input2)); // Expect: false.
 
 
 const input3Values = [1, 1, 6];
