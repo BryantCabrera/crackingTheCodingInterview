@@ -112,14 +112,3 @@ while (input3.size() < input3Values.length + 1) {
 }
 
 console.log(palindrome(input3)); // Expect: true.
-
-
-// const input4Values = [5, 9, 2];
-// const input4 = new SinglyLinkedList(new SinglyLinkedListNode(3));
-// let valuePointer4 = 0;
-// while (input4.size() < input4Values.length + 1) {
-// 	input4.getLast().next = new SinglyLinkedListNode(input4Values[valuePointer4]);
-// 	valuePointer4++;
-// }
-
-// const output2 = sumListsReverse(input3, input4); // Expect: 0 -> 7 -> 5 -> 3.
