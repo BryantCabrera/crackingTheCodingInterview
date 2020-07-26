@@ -61,7 +61,7 @@ class SinglyLinkedListNode {
 const input1Values = ['b', 'c', 'd', 'e'];
 const input1 = new SinglyLinkedList(new SinglyLinkedListNode('a'));
 let valuePointer1 = 0;
-while (input1.size() < input1Values.length) {
+while (input1.size() < input1Values.length + 1) {
 	input1.getLast().next = new SinglyLinkedListNode(input1Values[valuePointer1]);
 	valuePointer1++;
 }
@@ -74,7 +74,7 @@ console.log(input1.head.next.next.value); // Expect: 'd'.
 const input2Values = ['b', 'c', 'd'];
 const input2 = new SinglyLinkedList(new SinglyLinkedListNode('a'));
 let valuePointer2 = 0;
-while (input2.size() < input2Values.length) {
+while (input2.size() < input2Values.length + 1) {
 	input2.getLast().next = new SinglyLinkedListNode(input2Values[valuePointer2]);
 	valuePointer2++;
 }

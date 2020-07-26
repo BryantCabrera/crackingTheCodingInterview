@@ -64,7 +64,7 @@ class SinglyLinkedListNode {
 const input1Values = [4, 1, 3, 4, 2, 3, 3, 4, 4, 5];
 const input1 = new SinglyLinkedList(new SinglyLinkedListNode(2));
 let valuePointer = 0;
-while (input1.size() < input1Values.length) {
+while (input1.size() < input1Values.length + 1) {
 	input1.getLast().next = new SinglyLinkedListNode(input1Values[valuePointer]);
 	valuePointer++;
 }

@@ -18,36 +18,55 @@ const partition = (singlyLinkedList, partitionValue) => {
 		currentNode = currentNode.next;
 	}
 
-	console.log(`lessThanPartition: ${lessThanPartition}`);
-	console.log(`equalToPartition: ${equalToPartition}`);
-	console.log(`greaterThanPartition: ${greaterThanPartition}`);
+	const mergedArrays = [...lessThanPartition, ...equalToPartition, ...greaterThanPartition];
+	console.log(`mergedArrays: ${mergedArrays}`);
 	let partitionedLinkedList = new SinglyLinkedList(new SinglyLinkedListNode(null));
 	let currentNode2 = partitionedLinkedList.head;
-	while (lessThanPartition.length) {
+	console.log(`currentNode2: ${currentNode2.value}`);
+	while (mergedArrays.length) {
 		if (currentNode2.value === null) {
-			currentNode2.value = lessThanPartition[0];
-		} else {
-			currentNode2.next = new SinglyLinkedListNode(lessThanPartition.shift());
+			currentNode2.value = mergedArrays.shift();
 		}
-	}
-
-	while (equalToPartition.length) {
-		if (currentNode2.value === null) {
-			currentNode2.value = equalToPartition[0];
-		} else {
-			currentNode2.next = new SinglyLinkedListNode(equalToPartition.shift());
-		}
-	}
-
-	while (greaterThanPartition.length) {
-		if (currentNode2.value === null) {
-			currentNode2.value = greaterThanPartition[0];
-		} else {
-			currentNode2.next = new SinglyLinkedListNode(greaterThanPartition.shift());
-		}
+		currentNode2.next = new SinglyLinkedListNode(mergedArrays.shift());
+		currentNode2 = currentNode2.next;
 	}
 
 	return partitionedLinkedList;
+
+	// console.log(`lessThanPartition: ${lessThanPartition}`);
+	// console.log(`equalToPartition: ${equalToPartition}`);
+	// console.log(`greaterThanPartition: ${greaterThanPartition}`);
+	// let partitionedLinkedList = new SinglyLinkedList(new SinglyLinkedListNode(null));
+	// let currentNode2 = partitionedLinkedList.head;
+	// console.log(`currentNode2: ${currentNode2}`);
+	// while (lessThanPartition.length) {
+	// 	if (currentNode2.value === null) {
+	// 		currentNode2.value = lessThanPartition[0];
+	// 	} else {
+	// 		currentNode2.next = new SinglyLinkedListNode(lessThanPartition.shift());
+	// 	}
+	// 	currentNode2 = currentNode2.next;
+	// }
+
+	// while (equalToPartition.length) {
+	// 	if (currentNode2.value === null) {
+	// 		currentNode2.value = equalToPartition[0];
+	// 	} else {
+	// 		currentNode2.next = new SinglyLinkedListNode(equalToPartition.shift());
+	// 	}
+	// 	currentNode2 = currentNode2.next;
+	// }
+
+	// while (greaterThanPartition.length) {
+	// 	if (currentNode2.value === null) {
+	// 		currentNode2.value = greaterThanPartition[0];
+	// 	} else {
+	// 		currentNode2.next = new SinglyLinkedListNode(greaterThanPartition.shift());
+	// 	}
+	// 	currentNode2 = currentNode2.next;
+	// }
+
+	// return partitionedLinkedList;
 };
 
 // Implementing/creating a Singly LinkedList for test inputs
@@ -104,20 +123,20 @@ class SinglyLinkedListNode {
 const input1Values = [4, 1, 3, 4, 2, 3, 3, 4, 4];
 const input1 = new SinglyLinkedList(new SinglyLinkedListNode(2));
 let valuePointer1 = 0;
-while (input1.size() < input1Values.length) {
+while (input1.size() < input1Values.length + 1) {
 	input1.getLast().next = new SinglyLinkedListNode(input1Values[valuePointer1]);
 	valuePointer1++;
 }
 
 const output1 = partition(input1, 1); // Given value 1 as the partition.
 console.log(output1.size()); // Expect: 10.
-console.log(output1.head); // Expect: 2-> 1 -> 4 -> 3 -> 4 -> 2 -> 3 -> 3 -> 4 -> 4.
+console.log(output1.head); // Expect: 1 -> 2 -> 4 -> 3 -> 4 -> 2 -> 3 -> 3 -> 4 -> 4.
 
 
 const input2Values = [4, 1, 3, 4, 2, 3, 3, 4, 4];
 const input2 = new SinglyLinkedList(new SinglyLinkedListNode(2));
 let valuePointer2 = 0;
-while (input2.size() < input2Values.length) {
+while (input2.size() < input2Values.length + 1) {
 	input2.getLast().next = new SinglyLinkedListNode(input2Values[valuePointer2]);
 	valuePointer2++;
 }
@@ -131,7 +150,7 @@ console.log(output2.head); // Expect: 2 -> 1 -> 3 -> 2 -> 3 -> 3 -> 4 -> 4 -> 4 
 const input3Values = [4, 1, 4, 2, 4, 4];
 const input3 = new SinglyLinkedList(new SinglyLinkedListNode(2));
 let valuePointer3 = 0;
-while (input3.size() < input3Values.length) {
+while (input3.size() < input3Values.length + 1) {
 	input3.getLast().next = new SinglyLinkedListNode(input3Values[valuePointer3]);
 	valuePointer3++;
 }
