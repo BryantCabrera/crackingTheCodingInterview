@@ -7,19 +7,19 @@ const sumListsReverse = (singlyLinkedList1, singlyLinkedList2) => {
 	let summedList = new SinglyLinkedList(new SinglyLinkedListNode(null));
 	let currentNodeSummed = summedList.head;
 	let carry = 0;
-	while (currentNode1 && currentNode2) {
-		let currentSum = currentNode1.value + currentNode2.value + carry;
+	while (currentNode1 || currentNode2) {
+			// Utilizes ternary to handle inputs of different sizes/lenghts.  This defaults to a node of value 0, effectively prepending 0s to a digit if it is smaller than the other.
+		let currentSum = (currentNode1 ? currentNode1.value : 0) + (currentNode2 ? currentNode2.value : 0) + carry;
+		currentNodeSummed.value = currentSum >= 10 ? currentSum - 10 : currentSum;
+		carry = currentSum >= 10 ? 1 : 0;
 
-		currentNodeSummed.value = currentSum > 10 ? currentSum - 10 : currentSum;
-		carry = currentSum > 10 ? 1 : 0;
-
-		if (currentNode1.next && currentNode2.next) {
+		if ( (currentNode1 && currentNode1.next) || (currentNode2 && currentNode2.next)) {
 			currentNodeSummed.next = new SinglyLinkedListNode(null);
 			currentNodeSummed = currentNodeSummed.next;
 		}
 
-		currentNode1 = currentNode1.next;
-		currentNode2 = currentNode2.next;
+		currentNode1 = currentNode1 ? currentNode1.next : null;
+		currentNode2 = currentNode2 ? currentNode2.next : null;
 	}
 
 	return summedList;
@@ -134,6 +134,7 @@ while (input2.size() < input2Values.length + 1) {
 
 const output1 = sumListsReverse(input1, input2); // Expect: 2 -> 1 -> 9.
 console.log(output1.size()); // Expect: 3.
+console.log(output1.head); // Expect: 2 -> 1 -> 9.
 
 const input3Values = [1, 6];
 const input3 = new SinglyLinkedList(new SinglyLinkedListNode(7));
@@ -143,17 +144,18 @@ while (input3.size() < input3Values.length + 1) {
 	valuePointer3++;
 }
 
-const input4Values = [9, 2];
-const input4 = new SinglyLinkedList(new SinglyLinkedListNode(5));
+const input4Values = [5, 9, 2];
+const input4 = new SinglyLinkedList(new SinglyLinkedListNode(3));
 let valuePointer4 = 0;
 while (input4.size() < input4Values.length + 1) {
 	input4.getLast().next = new SinglyLinkedListNode(input4Values[valuePointer4]);
 	valuePointer4++;
 }
 
-const output2 = sumListsReverse(input1, input2); // Expect: 2 -> 1 -> 9.
-console.log(output2.size()); // Expect: 3.
-console.log(output2.head); // Expect: 2 -> 1 -> 9.
+const output2 = sumListsReverse(input3, input4); // Expect: 0 -> 7 -> 5 -> 3.
+console.log(output2.size()); // Expect: 4.
+console.log(output2.head); // Expect: 0 -> 7 -> 5 -> 3.
+console.log(output2.getLast().value); // Expect: 3.
 
 const input5Values = [1, 7];
 const input5 = new SinglyLinkedList(new SinglyLinkedListNode(6));
