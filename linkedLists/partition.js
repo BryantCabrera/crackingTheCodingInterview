@@ -19,10 +19,9 @@ const partition = (singlyLinkedList, partitionValue) => {
 	}
 
 	const mergedArrays = [...lessThanPartition, ...equalToPartition, ...greaterThanPartition];
-	console.log(`mergedArrays: ${mergedArrays}`);
 	let partitionedLinkedList = new SinglyLinkedList(new SinglyLinkedListNode(null));
 	let currentNode2 = partitionedLinkedList.head;
-	console.log(`currentNode2: ${currentNode2.value}`);
+
 	while (mergedArrays.length) {
 		if (currentNode2.value === null) {
 			currentNode2.value = mergedArrays.shift();
@@ -32,41 +31,6 @@ const partition = (singlyLinkedList, partitionValue) => {
 	}
 
 	return partitionedLinkedList;
-
-	// console.log(`lessThanPartition: ${lessThanPartition}`);
-	// console.log(`equalToPartition: ${equalToPartition}`);
-	// console.log(`greaterThanPartition: ${greaterThanPartition}`);
-	// let partitionedLinkedList = new SinglyLinkedList(new SinglyLinkedListNode(null));
-	// let currentNode2 = partitionedLinkedList.head;
-	// console.log(`currentNode2: ${currentNode2}`);
-	// while (lessThanPartition.length) {
-	// 	if (currentNode2.value === null) {
-	// 		currentNode2.value = lessThanPartition[0];
-	// 	} else {
-	// 		currentNode2.next = new SinglyLinkedListNode(lessThanPartition.shift());
-	// 	}
-	// 	currentNode2 = currentNode2.next;
-	// }
-
-	// while (equalToPartition.length) {
-	// 	if (currentNode2.value === null) {
-	// 		currentNode2.value = equalToPartition[0];
-	// 	} else {
-	// 		currentNode2.next = new SinglyLinkedListNode(equalToPartition.shift());
-	// 	}
-	// 	currentNode2 = currentNode2.next;
-	// }
-
-	// while (greaterThanPartition.length) {
-	// 	if (currentNode2.value === null) {
-	// 		currentNode2.value = greaterThanPartition[0];
-	// 	} else {
-	// 		currentNode2.next = new SinglyLinkedListNode(greaterThanPartition.shift());
-	// 	}
-	// 	currentNode2 = currentNode2.next;
-	// }
-
-	// return partitionedLinkedList;
 };
 
 // Implementing/creating a Singly LinkedList for test inputs
