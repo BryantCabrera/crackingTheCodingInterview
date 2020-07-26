@@ -2,7 +2,7 @@
 
 const returnKthToLast = (singlyLinkedList) => {
 	let currentNode = singlyLinkedList.head;
-	while (currentNode.next !== null) {
+	while (currentNode.next) {
 		// When the next node is null, setting currentNode to null will terminate the while loop.
 		currentNode = currentNode.next;
 	}
@@ -50,7 +50,7 @@ class SinglyLinkedList {
 			}
 		}
 
-		return lastNode
+		return lastNode;
 	}
 }
 

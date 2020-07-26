@@ -9,8 +9,8 @@ const removeDups = (singlyLinkedList) => {
 	};
 
 	// We are checking currentNode.next so that we can edit the next pointer of the currentNode since this is a singly-linked list and we won't be able to traverse back up to the previousNode to make necessary edits.
-	while (currentNode !== null) {
-		if (currentNode.next !== null) {
+	while (currentNode) {
+		if (currentNode.next) {
 			if (hashMap[currentNode.next.value]) {
 				// If the hashMap contains the value of the next node, it is a duplicate.  So, remove it from the SinglyLinkedList by setting currentNode's 'next' to the next node's 'next'.
 				currentNode.next = currentNode.next.next;
@@ -67,7 +67,7 @@ class SinglyLinkedList {
 			}
 		}
 
-		return lastNode
+		return lastNode;
 	}
 }
 

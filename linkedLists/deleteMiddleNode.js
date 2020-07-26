@@ -47,7 +47,7 @@ class SinglyLinkedList {
 			}
 		}
 
-		return lastNode
+		return lastNode;
 	}
 }
 

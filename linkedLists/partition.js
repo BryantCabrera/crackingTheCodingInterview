@@ -6,7 +6,7 @@ const partition = (singlyLinkedList, partitionValue) => {
 	const greaterThanPartition = [];
 
 	let currentNode = singlyLinkedList.head;
-	while (currentNode !== null) {
+	while (currentNode) {
 		if (currentNode.value < partitionValue) {
 			lessThanPartition.push(currentNode.value);
 		} else if (currentNode.value === partitionValue) {
@@ -73,7 +73,7 @@ class SinglyLinkedList {
 			}
 		}
 
-		return lastNode
+		return lastNode;
 	}
 }
 
