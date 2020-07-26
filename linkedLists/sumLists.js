@@ -1,7 +1,31 @@
 // 2.5 Sum Lists: You have two numvers represented by a linked list, where each node contains a single digit.  The digits are stored in reverse order, such that the 1's digit is at the head of the list.  Write a function that adds thw two numbers and returns the sum as a linked list.
 
-const sumLists = (SinglyLinkedList) => {
+const sumLists = (singlyLinkedList1, singlyLinkedList2) => {
+	let currentNode1 = singlyLinkedList1.head;
+	let currentNode2 = singlyLinkedList2.head;
 
+	let summedList = new SinglyLinkedList(new SinglyLinkedListNode(null));
+	let currentNodeSummed = summedList.head;
+	let carry = 0;
+	while (currentNode1 !== null && currentNode2 !== null) {
+		let currentSum = currentNode1.value + currentNode2.value + carry;
+		// if (currentNodeSummed.value === null) {
+			currentNodeSummed.value = currentSum > 10 ? currentSum - 10 : currentSum;
+			carry = currentSum > 10 ? 1 : 0;
+		// }
+
+		if (currentNode1.next !== null && currentNode2.next !== null) {
+			console.log('next', currentNodeSummed.next);
+			currentNodeSummed.next = new SinglyLinkedListNode(null);
+			console.log('next', currentNodeSummed.next);
+			currentNodeSummed = currentNodeSummed.next;
+		}
+
+		currentNode1 = currentNode1.next;
+		currentNode2 = currentNode2.next;
+	}
+
+	return summedList;
 };
 
 // Implementing/creating a Singly LinkedList for test inputs
@@ -72,4 +96,5 @@ while (input2.size() < input2Values.length + 1) {
 }
 
 const output1 = sumLists(input1, input2); // Expect: 2 -> 1 -> 9.
+console.log(output1.size()); // Expect: 3.
 console.log(output1.head); // Expect: 2 -> 1 -> 9.
