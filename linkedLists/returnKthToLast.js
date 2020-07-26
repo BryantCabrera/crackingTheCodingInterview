@@ -1,10 +1,13 @@
 // 2.2 Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list.
 
-const returnKthToLast = (singlyLinkedList) => {
+// Assuming that k is how far away from the last node the target ndoe is.  e.g. k = 2 means the 2nd to last element.
+const returnKthToLast = (singlyLinkedList, k) => {
 	let currentNode = singlyLinkedList.head;
-	while (currentNode.next) {
-		// When the next node is null, setting currentNode to null will terminate the while loop.
+	let counter = singlyLinkedList.size() - k;
+
+	while (counter > 0) {
 		currentNode = currentNode.next;
+		counter--;
 	}
 
 	return `currentNode: ${currentNode}, currentNode's value: ${currentNode.value}`;
@@ -69,4 +72,6 @@ while (input1.size() < input1Values.length + 1) {
 	valuePointer++;
 }
 
-console.log(returnKthToLast(input1)); // Expect: Node(4).
+console.log(returnKthToLast(input1, 2)); // Expect: Node(4).
+console.log(returnKthToLast(input1, 4)); // Expect: Node(3).
+console.log(returnKthToLast(input1, 1)); // Expect: Node(5).
