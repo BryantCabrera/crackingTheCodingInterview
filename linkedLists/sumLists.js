@@ -9,7 +9,7 @@ const sumListsReverse = (singlyLinkedList1, singlyLinkedList2) => {
 	let carry = 0;
 	while (currentNode1 && currentNode2) {
 		let currentSum = currentNode1.value + currentNode2.value + carry;
-		
+
 		currentNodeSummed.value = currentSum > 10 ? currentSum - 10 : currentSum;
 		carry = currentSum > 10 ? 1 : 0;
 
@@ -20,6 +20,40 @@ const sumListsReverse = (singlyLinkedList1, singlyLinkedList2) => {
 
 		currentNode1 = currentNode1.next;
 		currentNode2 = currentNode2.next;
+	}
+
+	return summedList;
+};
+
+// Suppose the digits are stored in forward order.  Repeat the above problem.
+const sumListsForward = (singlyLinkedList1, singlyLinkedList2) => {
+	let currentNode1 = singlyLinkedList1.head;
+	let num1 = '';
+	let currentNode2 = singlyLinkedList2.head;
+	let num2 = '';
+
+	while (currentNode1 && currentNode2) {
+		// Store values as a string as we cannot tell how long the input linkedList is, and therefore cannot tell the current digit's place.
+		num1 += `${currentNode1.value}`;
+		num2 += `${currentNode2.value}`;
+
+		currentNode1 = currentNode1.next;
+		currentNode2 = currentNode2.next;
+	}
+
+	// Convert strings into integers.
+	num1 = parseInt(num1, 10);
+	num2 = parseInt(num2, 10);
+	// Sum the integers and split it into an array to make each digit iterable.
+	const sum = (num1 + num2).toString().split('');
+
+	// Initialize linked list with 1st digit in sum array.
+	let summedList = new SinglyLinkedList(new SinglyLinkedListNode(sum[0]));
+	let currentNodeSummed = summedList.head;
+	for (let i = 1; i < sum.length; i++) {
+		// Set the next node in the LinkedList equal to the current digit element in the array.
+		currentNodeSummed.next = new SinglyLinkedListNode(sum[i]);
+		currentNodeSummed = currentNodeSummed.next;
 	}
 
 	return summedList;
@@ -95,3 +129,23 @@ while (input2.size() < input2Values.length + 1) {
 const output1 = sumListsReverse(input1, input2); // Expect: 2 -> 1 -> 9.
 console.log(output1.size()); // Expect: 3.
 console.log(output1.head); // Expect: 2 -> 1 -> 9.
+
+const input3Values = [1, 7];
+const input3 = new SinglyLinkedList(new SinglyLinkedListNode(6));
+let valuePointer3 = 0;
+while (input3.size() < input3Values.length + 1) {
+	input3.getLast().next = new SinglyLinkedListNode(input3Values[valuePointer3]);
+	valuePointer3++;
+}
+
+const input4Values = [9, 5];
+const input4 = new SinglyLinkedList(new SinglyLinkedListNode(2));
+let valuePointer4 = 0;
+while (input4.size() < input4Values.length + 1) {
+	input4.getLast().next = new SinglyLinkedListNode(input4Values[valuePointer4]);
+	valuePointer4++;
+}
+
+const output2 = sumListsForward(input3, input4); // Expect: 9 -> 1 -> 2.
+console.log(output2.size()); // Expect: 3.
+console.log(output2.head); // Expect: 9 -> 1 -> 2.
