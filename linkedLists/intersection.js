@@ -15,16 +15,13 @@ const intersection = (singlyLinkedList1, singlyLinkedList2) => {
 			currentNode2 = currentNode2.next;
 		};
 	}
-	// console.log(`list1Arr: ${list1Arr[list1Arr.length - 1].value}, list2Arr: ${list2Arr}`);
 
 	const difference = Math.abs(list1Arr.length - list2Arr.length);
 	let list1ArrPointer = list1Arr.length - 1;
 	let list2ArrPointer = list2Arr.length - 1;
 
 	let currentIntersection;
-	// while (list1ArrPointer < list1Arr.length || list2ArrPointer < list2Arr.length) {
 	while (list1ArrPointer && list2ArrPointer) {
-		// console.log('pointers: ', list1ArrPointer, list2ArrPointer, difference, list1Arr[list1ArrPointer]);
 		// If the linked lists intersect, at the very least, the last node will be the same.  Any node after the intersection will have the same value.
 		// Therefore, if we are iterating through the values backwards, we check that each element in either array is equal.  The node right before they differ is the point of intersection.
 		if (list1Arr[list1ArrPointer].value === list2Arr[list2ArrPointer].value) {
