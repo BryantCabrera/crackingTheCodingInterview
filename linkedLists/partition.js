@@ -110,7 +110,6 @@ console.log(output2.size()); // Expect: 10.
 console.log(output2.head); // Expect: 2 -> 1 -> 3 -> 2 -> 3 -> 3 -> 4 -> 4 -> 4 -> 4.
 
 
-
 const input3Values = [4, 1, 4, 2, 4, 4];
 const input3 = new SinglyLinkedList(new SinglyLinkedListNode(2));
 let valuePointer3 = 0;
