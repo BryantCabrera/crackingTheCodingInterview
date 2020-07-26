@@ -70,12 +70,12 @@ class SinglyLinkedListNode {
 }
 
 const input1 = new SinglyLinkedList; // Instantiates a new SinglyLinkedList.
-input1.createLinkedList(['A', 'B', 'C', 'D', 'E', 'C']); // Creates a SinglyLinkedList: 'A -> 'B' -> 'C' -> 'D' -> 'E' -> 'C'.
-
+input1.createLinkedList(['A', 'B', 'C', 'D', 'E']); // Creates a SinglyLinkedList: 'A -> 'B' -> 'C' -> 'D' -> 'E'.
+input1.getLast().next = input1.head.next.next; // Creates a SinglyLinkedList with a loop: 'A -> 'B' -> 'C' -> 'D' -> 'E' -> 'C'.
+// console.log('input1 last', input1.getLast()); // To check if a loop was indeed created; this won't terminate.
 console.log(loopDetection(input1)); // Expect: true, SinglyLinkedListNode('C');
 
 
 const input2 = new SinglyLinkedList; // Instantiates a new SinglyLinkedList.
 input2.createLinkedList(['A', 'B', 'C', 'D', 'E']); // Creates a SinglyLinkedList: 'A -> 'B' -> 'C' -> 'D' -> 'E'.
-
 console.log(loopDetection(input2)); // Expect: false.
