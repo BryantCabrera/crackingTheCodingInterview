@@ -2,7 +2,36 @@
 // DEFINITION Circular linked list: A (corrupt) linked list in which a node's next pointer points to an earlier node, so as to make a loop in the linked list.
 
 const loopDetection = (singlyLinkedList) => {
+	let slowPointer = singlyLinkedList.head;
+	let fastPointer = singlyLinkedList.head;
 
+	// Find the first collision point which will be at (loop size - k) where k is the number of nodes before entering the loop.
+	while (fastPointer !== null && fastPointer.next !== null) {
+		slowPointer = slowPointer.next;
+		fastPointer = fastPointer.next.next;
+
+		// This conditional and loop terminator needs to be in this part of the loop and not in the while loop argument because otherwise, the loop would not initiate as both pointers are initialized to the head of the same singlyLinkedList.
+		if (slowPointer.value === fastPointer.value) break;
+	}
+
+	console.log('fast', fastPointer, 'slow', slowPointer);
+	// If there is no loop cycle, return null.
+	if (fastPointer === null || fastPointer.next === null) {
+		return null;
+	}
+	// console.log('fast', fastPointer, 'slow', slowPointer);
+
+	// Point slowPointer back to the head of the singlyLinkedList, but keep fastPointer at 1st collision point.
+	slowPointer = singlyLinkedList.head;
+
+	// Traversing the linkedList 1 node at a time will result in a 2nd collision at the start of the loop.
+	while (slowPointer.value != fastPointer.value) {
+		console.log('entering 2nd while loop', slowPointer.value, fastPointer.value);
+		slowPointer = slowPointer.next;
+		fastPointer = fastPointer.next;
+	}
+
+	return fastPointer;
 };
 
 // Implementing/creating a Singly LinkedList for test inputs
@@ -76,6 +105,6 @@ input1.getLast().next = input1.head.next.next; // Creates a SinglyLinkedList wit
 console.log(loopDetection(input1)); // Expect: true, SinglyLinkedListNode('C');
 
 
-const input2 = new SinglyLinkedList; // Instantiates a new SinglyLinkedList.
-input2.createLinkedList(['A', 'B', 'C', 'D', 'E']); // Creates a SinglyLinkedList: 'A -> 'B' -> 'C' -> 'D' -> 'E'.
-console.log(loopDetection(input2)); // Expect: false.
+// const input2 = new SinglyLinkedList; // Instantiates a new SinglyLinkedList.
+// input2.createLinkedList(['A', 'B', 'C', 'D', 'E']); // Creates a SinglyLinkedList: 'A -> 'B' -> 'C' -> 'D' -> 'E'.
+// console.log(loopDetection(input2)); // Expect: null.
