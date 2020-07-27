@@ -14,19 +14,16 @@ const loopDetection = (singlyLinkedList) => {
 		if (slowPointer.value === fastPointer.value) break;
 	}
 
-	console.log('fast', fastPointer, 'slow', slowPointer);
 	// If there is no loop cycle, return null.
 	if (fastPointer === null || fastPointer.next === null) {
 		return null;
 	}
-	// console.log('fast', fastPointer, 'slow', slowPointer);
 
 	// Point slowPointer back to the head of the singlyLinkedList, but keep fastPointer at 1st collision point.
 	slowPointer = singlyLinkedList.head;
 
 	// Traversing the linkedList 1 node at a time will result in a 2nd collision at the start of the loop.
 	while (slowPointer.value != fastPointer.value) {
-		console.log('entering 2nd while loop', slowPointer.value, fastPointer.value);
 		slowPointer = slowPointer.next;
 		fastPointer = fastPointer.next;
 	}
@@ -105,6 +102,6 @@ input1.getLast().next = input1.head.next.next; // Creates a SinglyLinkedList wit
 console.log(loopDetection(input1)); // Expect: true, SinglyLinkedListNode('C');
 
 
-// const input2 = new SinglyLinkedList; // Instantiates a new SinglyLinkedList.
-// input2.createLinkedList(['A', 'B', 'C', 'D', 'E']); // Creates a SinglyLinkedList: 'A -> 'B' -> 'C' -> 'D' -> 'E'.
-// console.log(loopDetection(input2)); // Expect: null.
+const input2 = new SinglyLinkedList; // Instantiates a new SinglyLinkedList.
+input2.createLinkedList(['A', 'B', 'C', 'D', 'E']); // Creates a SinglyLinkedList: 'A -> 'B' -> 'C' -> 'D' -> 'E'.
+console.log(loopDetection(input2)); // Expect: null.
