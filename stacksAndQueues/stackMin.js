@@ -27,26 +27,3 @@ class Stack {
 		return this.min[this.min.length - 1];
 	}
 }
-
-// class Stack {
-// 	constructor() {
-// 		this.elements = [];
-// 		this.min = 0;
-// 	}
-
-// 	pop () {
-// 		this.elements.pop();
-// 	}
-
-// 	push (item) {
-// 		// At the moment we push(), we evaluate if this new value is less than the current min, and if so, reassign it.
-// 		if (item < this.min) {
-// 			this.min = item;
-// 		}
-// 		this.elements.push(item);
-// 	}
-
-// 	min () {
-// 		return this.min;
-// 	}
-// }
