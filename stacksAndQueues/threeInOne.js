@@ -1,5 +1,6 @@
 // 3.1 Three In One: Describe how you could use a single array to implement three stacks.
 
+// Note: This is assuming that we are using the dynamic arrays in javaScript (even through under the hood, they are operating like static arrays).
 // For the end of the array: you can pop() (remove the last item from the array) and push(item) (add an item to the end of the array) as normal with an array.
 // For the beginning of the array: you can pop() by using shift() to remove the first element in the array.  You can push(item) by using unshift() to add to the beginning of the array.
 // For the middle of the array: you can have 2 markers of the same value (e.g. both null) that delineates the end of the stack from the beginning of the array and the start of the stack from the end of the array.  You can pop() into this by removing whichever you designate to be the top of this middle stack: either the element at the index right after the 1st null or the element at the index before the 2nd null.  You can push() into this stack by adding at whichever you designate to be the top of this middle stack: either the element at the index right after the 1st null or the element at the index before the 2nd null.  The area that you designate to be the "top" of the middle stack should be the same for both pop() and push().
