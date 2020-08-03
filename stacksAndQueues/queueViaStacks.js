@@ -23,13 +23,9 @@ class MyQueue {
 	}
 
 	pop () {
-		if (this.stack1.elements.length === 0 && this.stack1.elements.length === 0) return 'There are no elements in this queue.';
+		if (this.stack1.elements.length === 0 && this.stack2.elements.length === 0) return 'There are no elements in this queue.';
 
 		if (this.stack1.elements.length) {
-			// for (let i = this.stack1.elements.length - 1; i >= 0; i--) {
-			// 	this.stack2.push(this.stack1.pop());
-			// }
-
 			this.invertStack(this.stack1, this.stack2);
 		}
 
@@ -77,3 +73,9 @@ console.log(testQueue.stack1.elements.length); // Expect: 0.
 console.log(testQueue.stack1.elements); // Expect: [].
 console.log(testQueue.stack2.elements.length); // Expect: 1.
 console.log(testQueue.stack2.elements); // Expect: [2].
+
+testQueue.push(3);
+console.log(testQueue.stack1.elements.length); // Expect: 2.
+console.log(testQueue.stack1.elements); // Expect: [2, 3].
+console.log(testQueue.stack2.elements.length); // Expect: 0.
+console.log(testQueue.stack2.elements); // Expect: [].
