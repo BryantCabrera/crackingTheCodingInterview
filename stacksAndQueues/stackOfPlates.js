@@ -24,7 +24,7 @@ class SetOfStacks {
 		// If there are no stacks return an error message.
 		// OR there is only 1 empty stack, return an error message.
 		// || (this.stacks.length === 1 && this.stacks[this.stacks.length - 1].length === 0)
-		if (this.stacks.length === 0) return 'There are no stacks in this set of stacks';
+		if (this.stacks.length === 0) return 'There are no stacks in this set of stacks.';
 
 		// Cache the popped element.
 		const poppedElement = this.stacks[this.stacks.length - 1].pop();
@@ -66,6 +66,11 @@ console.log(testSetOfStacks.stacks[testSetOfStacks.stacks.length - 1].elements.l
 console.log(testSetOfStacks.stacks); // Expect: [[1]].
 
 console.log(testSetOfStacks.pop()); // Expect: 1.
+console.log(testSetOfStacks.stacks.length); // Expect: 0.
+// console.log(testSetOfStacks.stacks[testSetOfStacks.stacks.length - 1].elements.length); // Expect: undefined.
+console.log(testSetOfStacks.stacks); // Expect: [].
+
+console.log(testSetOfStacks.pop()); // Expect: 'There are no stacks in this set of stacks.'.
 console.log(testSetOfStacks.stacks.length); // Expect: 0.
 // console.log(testSetOfStacks.stacks[testSetOfStacks.stacks.length - 1].elements.length); // Expect: undefined.
 console.log(testSetOfStacks.stacks); // Expect: [].
