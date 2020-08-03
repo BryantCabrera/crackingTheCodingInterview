@@ -23,7 +23,7 @@ class MyQueue {
 	}
 
 	pop () {
-		if (this.stack1.elements.length === 0 && this.stack1.elements.length === 0) return 'No new elements in '
+		if (this.stack1.elements.length === 0 && this.stack1.elements.length === 0) return 'There are no elements in this queue.';
 
 		if (this.stack1.elements.length) {
 			// for (let i = this.stack1.elements.length - 1; i >= 0; i--) {
@@ -37,12 +37,43 @@ class MyQueue {
 	}
 
 	push (element) {
+		if (this.stack2.elements.length) {
+			this.invertStack(this.stack2, this.stack1);
+		}
 
+		this.stack1.push(element);
 	}
 
 	invertStack (firstStack, secondStack) {
-		for (let i = this.firstStack.elements.length - 1; i >= 0; i--) {
-			this.secondStack.push(this.firstStack.pop());
+		for (let i = firstStack.elements.length - 1; i >= 0; i--) {
+			secondStack.push(firstStack.pop());
 		}
 	}
 }
+
+const testQueue = new MyQueue();
+
+console.log(testQueue.stack1.elements.length); // Expect: 0.
+console.log(testQueue.stack2.elements.length); // Expect: 0.
+
+console.log(testQueue.pop()); // Expect: 'There are no elements in this queue.'.
+console.log(testQueue.stack1.elements.length); // Expect: 0.
+console.log(testQueue.stack2.elements.length); // Expect: 0.
+
+testQueue.push(1);
+console.log(testQueue.stack1.elements.length); // Expect: 1.
+console.log(testQueue.stack1.elements); // Expect: [1].
+console.log(testQueue.stack2.elements.length); // Expect: 0.
+console.log(testQueue.stack2.elements); // Expect: [].
+
+testQueue.push(2);
+console.log(testQueue.stack1.elements.length); // Expect: 2.
+console.log(testQueue.stack1.elements); // Expect: [1, 2].
+console.log(testQueue.stack2.elements.length); // Expect: 0.
+console.log(testQueue.stack2.elements); // Expect: [].
+
+console.log(testQueue.pop()); // Expect 1.
+console.log(testQueue.stack1.elements.length); // Expect: 0.
+console.log(testQueue.stack1.elements); // Expect: [].
+console.log(testQueue.stack2.elements.length); // Expect: 1.
+console.log(testQueue.stack2.elements); // Expect: [2].
