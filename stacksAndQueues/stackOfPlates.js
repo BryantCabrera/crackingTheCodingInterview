@@ -1,6 +1,7 @@
 // 3.3 Stack of Plates: Imagine a (literal) stack of plates.  If the stack gets too high, it might topple.  Therefore, in real life, we would likely start a new stack when the previous stack exceeds some threshold.  Implement a data structure `SetOfStacks` that mimics this.  `SetOfStacks` should be composed of several stacks and should create a new stack once the previous one exceeds capacity.  SetOfStacks.push() and SetOfStacks.pop() should behave identically to a single stack (that is, pop() should return the same values as it would if there were just a single stack).
 
 // FOLLOW UP: Implement a fucntion popAt(int index) which performs a pop operation on a specific sub-stack.
+// Assumptions: If popAt() a stack, pushing still happens on the last stack in the SetOfStacks, not on the newly 
 
 class Stack {
 	constructor() {
@@ -33,6 +34,19 @@ class SetOfStacks {
 
 		// If after we've popped an element, the last stack in SetOfStacks is empty, pop that array from the SetOfStacks.
 		if (this.stacks[this.stacks.length - 1].elements.length === 0) this.stacks.pop();
+
+		// Return the popped element.
+		return poppedElement;
+	}
+
+	popAt (index) {
+		// If the index is not present in the set of stacks, return error messaging.
+		if (this.stacks.length - 1 < index) return 'That index does not exist in the current set of stacks.';
+
+		// Cache the popped element.
+		const poppedElement = this.stacks[index].pop();
+
+		// Here, we can choose to sacrifice some performance by shifting everything else in the stacks indexed greated than the index argument to the left 1 index.  However, for efficiency's sake, we will assume that it is ok to have non-full stacks.
 
 		// Return the popped element.
 		return poppedElement;
