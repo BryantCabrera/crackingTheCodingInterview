@@ -93,3 +93,11 @@ console.log(testSetOfStacks.stacks); // Expect: [].
 
 
 // FOLLOW UP: Test Cases
+testSetOfStacks.push(1);
+testSetOfStacks.push(2);
+testSetOfStacks.push(3);
+
+console.log(testSetOfStacks.popAt(0)); // Expect: 2.
+console.log(testSetOfStacks.stacks.length); // Expect: 2.
+console.log(testSetOfStacks.stacks[0].elements.length); // Expect: 1.
+console.log(testSetOfStacks.stacks[1].elements.length); // Expect: 1.
