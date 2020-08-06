@@ -7,7 +7,7 @@ const deleteMiddleNode = (singlyLinkedListNode) => {
 	singlyLinkedListNode.next = singlyLinkedListNode.next;
 };
 
-// Implementing/creating a Singly LinkedList for test inputs
+// Implementing/creating a Singly LinkedList for test inputs.
 class SinglyLinkedList {
 	// If the head value is not passed, the head is initialized to null.
 	constructor (head = null) {
