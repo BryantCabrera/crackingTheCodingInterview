@@ -1,8 +1,5 @@
-// 4.1 Route Between Nodes: Given a directed graph, design an algorithm to find out whether there is a route between two nodes.
-
-
-// Create a graph class.
-class DirectedGraph { 
+// Create an undirected graph class.
+class UnirectedGraph { 
 	// Define vertex array and adjacent list. 
 	constructor(numVertices) 
 	{ 
