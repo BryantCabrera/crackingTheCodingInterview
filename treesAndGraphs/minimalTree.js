@@ -1,8 +1,8 @@
 // 4.2 Minimal Tree: Given a sorted (increasing order) array with unique integer elements, write an algorithm to create a binary search tree with minimal height.
 
 const minimalTree = (arr, startIndex, endIndex) => {
-	// EDGE CASE: If the array is null, return null.
-	if (arr.length === 0) return null;
+	// EDGE CASE: If the array is empty or not and array, return null.
+	if (arr.length === 0 || !Array.isArray(arr)) return null;
 
 	// Once the endIndex is less than the startIndex, return null.
 	// This effectively begins processing a new branch.
