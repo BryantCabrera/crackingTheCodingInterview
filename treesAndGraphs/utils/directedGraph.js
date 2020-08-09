@@ -1,8 +1,7 @@
 // Create a directed graph class.
 class DirectedGraph { 
 	// Define vertex array and adjacent list. 
-	constructor(numVertices) 
-	{ 
+	constructor(numVertices) { 
 		this.numVertices = numVertices; 
 		this.adjList = new Map(); 
 	} 
@@ -13,7 +12,6 @@ class DirectedGraph {
 		// Initialize the adjacent list with a null array.
 		this.adjList.set(vertex, []); 
 	} 
-
 	
 	// Add an edge to the graph.
 	addEdge(vertex1, vertex2) { 
@@ -75,3 +73,5 @@ graph1.addEdge('C', 'F');
 // E -> F C 
 // F -> 
 graph1.printGraph(); 
+
+export const graph1;

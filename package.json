@@ -1,0 +1,20 @@
+{
+  "name": "crackingthecodinginterview",
+  "version": "1.0.0",
+  "description": "Cracking the Interview Coding Challenges",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BryantCabrera/crackingTheCodingInterview.git"
+  },
+  "author": "Bryant Cabrera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BryantCabrera/crackingTheCodingInterview/issues"
+  },
+  "homepage": "https://github.com/BryantCabrera/crackingTheCodingInterview#readme",
+  "devDependencies": {}
+}

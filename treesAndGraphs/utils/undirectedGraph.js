@@ -1,8 +1,8 @@
 // Create an undirected graph class.
+// Refer to visual diagram of graph at https://www.geeksforgeeks.org/implementation-graph-javascript/.
 class UnirectedGraph { 
 	// Define vertex array and adjacent list. 
-	constructor(numVertices) 
-	{ 
+	constructor(numVertices) { 
 		this.numVertices = numVertices; 
 		this.adjList = new Map(); 
 	} 
@@ -14,7 +14,6 @@ class UnirectedGraph {
 		this.adjList.set(vertex, []); 
 	} 
 
-	
 	// Add an edge to the graph.
 	addEdge(vertex1, vertex2) { 
 		// Get the list for vertex1 and put the vertex2denoting edge between v and w.
