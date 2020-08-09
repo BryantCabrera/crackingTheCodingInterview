@@ -20,8 +20,8 @@ class BinaryTree {
 		const node = new BinaryTreeNode(arr[midpoint]);
 		
 		// Recursively create the left and right nodes of the current node.
-		node.left = minimalTree(arr, startIndex, midpoint - 1);
-		node.right = minimalTree(arr, midpoint + 1, endIndex);
+		node.left = this.createBinaryTree(arr, startIndex, midpoint - 1);
+		node.right = this.createBinaryTree(arr, midpoint + 1, endIndex);
 	
 		return node;
 	};
