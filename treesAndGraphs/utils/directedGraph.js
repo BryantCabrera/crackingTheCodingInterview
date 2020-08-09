@@ -20,8 +20,8 @@ class DirectedGraph {
 		// Get the list for vertex1 and put the vertex2denoting edge between v and w.
 		this.adjList.get(vertex1).push(vertex2); 
 	
-		// Since graph is undirected, add an edge from vertex2 to vertex1 too.
-		this.adjList.get(vertex2).push(vertex1); 
+		// Since graph is directed, we don't need to add an edge from vertex2 to vertex1 too.
+		// this.adjList.get(vertex2).push(vertex1); 
 	} 
 
 	// Print the vertex and adjacency list. 
@@ -69,9 +69,9 @@ graph1.addEdge('C', 'F');
 // Print all vertices and each of their corresponding adjacency lists.
 // Expect:  
 // A -> B D E 
-// B -> A C 
-// C -> B E F 
-// D -> A E 
-// E -> A D F C 
-// F -> E C 
+// B -> C 
+// C -> F 
+// D -> E 
+// E -> F C 
+// F -> 
 graph1.printGraph(); 
