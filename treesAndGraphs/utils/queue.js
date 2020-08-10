@@ -61,7 +61,7 @@ class SinglyLinkedList {
 }
 
 // Implementing a Queue using a SinglyLinkedList.
-export class Queue {
+class Queue {
 	constructor () {
 		this.elements = new SinglyLinkedList();
 	}
