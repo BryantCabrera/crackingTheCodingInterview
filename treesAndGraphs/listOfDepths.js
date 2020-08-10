@@ -96,37 +96,6 @@ class SinglyLinkedList {
 	}
 }
 
-// Implementing a Queue using a SinglyLinkedList.
-class Queue {
-	constructor () {
-		this.elements = new SinglyLinkedList();
-	}
-
-	peek () {
-		if (this.elements.head === null) return 'There are no elements in this queue.';
-
-		return this.elements.head.value;
-	}
-
-	pop () {
-		if (this.elements.length === 0) return 'There are no elements in this queue.';
-
-		// Cache the popped element's value.
-		const poppedElement = this.elements.head.value;
-
-		// In a SinglyLinkedList, head.next becomes the new head.  Delete the head.
-		this.elements.head = this.elements.head.next;
-
-		// Return the popped element.
-		return poppedElement;
-	}
-
-	push (item) {
-		// Add an item to the tail of the LinkedList.
-		this.elements.add(item);
-	}
-}
-
 // Implements a binary tree.
 class BinaryTree {
 	constructor (arr = []) {
