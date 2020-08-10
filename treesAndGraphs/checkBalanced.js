@@ -6,14 +6,17 @@ const checkBalanced = (binaryTreeRoot) => {
 
 const compareHeight = (binaryTreeRoot) => {
 	if (binaryTreeRoot === null) {
+		// Return 0 so we don't affect heightDiff as there are no more child nodes in this respective branch.
 		return 0;
 	}
 
+	// Recursively determine the left height.
 	const leftHeight = compareHeight(binaryTreeRoot.left);
 	if (leftHeight === -1) {
 		return -1;
 	}
 
+	// Recursively determine the right height.
 	const rightHeight = compareHeight(binaryTreeRoot.right);
 	if (rightHeight === -1) {
 		return -1;
@@ -23,6 +26,7 @@ const compareHeight = (binaryTreeRoot) => {
 
 	if (Math.abs(heightDiff) > 1) {
 		// The binary tree is not balanced.
+		// Return -1 to break out of recursion calls as we have found a part of the tree that isn't balanced.
 		return -1; 
 	} else {
 		// Add 1 to the height and return it.
