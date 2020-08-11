@@ -1,30 +1,39 @@
 // 4.5 Validate BST: Implement a function to check if a binary tree is a binary search tree.
 
 const validateBST = (binaryTreeRoot) => {
+	// Passing in null arguments for min and max will make the root always pass the check.
+	return checkBranch(binaryTreeRoot, null, null);
+};
+
+const checkBranch = (binaryTreeNode, min, max) => {
 	// Base Case: If root is null, return null.
-	if (binaryTreeRoot === null) return true;
+	if (binaryTreeNode === null) return true;
 
 	// Depth-First Search with recursion.
-	const currentNode = binaryTreeRoot;
+	// const left = binaryTreeNode.left;
+	// if (min !== null && left.value <= min) {
+	// 	checkBranch(left, min, left.value);
+	// } 
 
-	const left = validateBST(binaryTreeRoot.left);
-	if (left !== null && left.value > currentNode.value) {
+	// console.log(`left: ${left}`);
+
+	// const right = binaryTreeNode.right;
+	// if (max !== null && right.value > max) {
+	// 	checkBranch(right, right.value, max);
+	// } 
+
+	// console.log(`right: ${right}`);
+
+	if ((min !== null && binaryTreeNode.value <= min) || (max !== null && binaryTreeNode.value > max)) {
 		return false;
-	} else if (left === null || left.value < currentNode.value) {
-		return true;
 	}
-	console.log(`left: ${left}`);
 
-	const right = validateBST(binaryTreeRoot.right);
-	if (right !== null && right.value < currentNode.value) {
+	if ((!checkBranch(binaryTreeNode.left, min, binaryTreeNode.value) || !checkBranch(binaryTreeNode.right, binaryTreeNode.value, max))) {
 		return false;
-	} else if (right === null || right.value > currentNode.value) {
-		return true;
 	}
 
-	console.log(`right: ${right}`);
 
-	return left && right;
+	return true;
 };
 
 // Implements a binary tree.
