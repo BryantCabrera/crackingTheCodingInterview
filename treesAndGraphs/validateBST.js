@@ -1,7 +1,30 @@
 // 4.5 Validate BST: Implement a function to check if a binary tree is a binary search tree.
 
 const validateBST = (binaryTreeRoot) => {
+	// Base Case: If root is null, return null.
+	if (binaryTreeRoot === null) return true;
 
+	// Depth-First Search with recursion.
+	const currentNode = binaryTreeRoot;
+
+	const left = validateBST(binaryTreeRoot.left);
+	if (left !== null && left.value > currentNode.value) {
+		return false;
+	} else if (left === null || left.value < currentNode.value) {
+		return true;
+	}
+	console.log(`left: ${left}`);
+
+	const right = validateBST(binaryTreeRoot.right);
+	if (right !== null && right.value < currentNode.value) {
+		return false;
+	} else if (right === null || right.value > currentNode.value) {
+		return true;
+	}
+
+	console.log(`right: ${right}`);
+
+	return left && right;
 };
 
 // Implements a binary tree.
