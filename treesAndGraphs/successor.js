@@ -1,7 +1,7 @@
 // 4.6 Successor: Write an algorithm to find the "next" node (i.e., in-order successor) of a given node in a binary search tree.  You may assume that each node has a link to its parent.
 
 const successor = () => {
-	// In-Order Traversal is LCR.
+	// In-Order Traversal is LCR (Left Node -> Current/Parent Node -> Right Node).
 
 
 };
@@ -12,7 +12,7 @@ class BinaryTree {
 		this.root = this.createBinaryTree(arr, 0, arr.length - 1)
 	}
 
-	createBinaryTree (arr, startIndex, endIndex) {
+	createBinaryTree (arr, startIndex, endIndex, parent = null) {
 		// EDGE CASE: If the array is empty or not and array, return null.
 		if (arr.length === 0 || !Array.isArray(arr)) return null;
 
@@ -27,9 +27,10 @@ class BinaryTree {
 		// Create a new BinaryTreeNode.
 		const node = new BinaryTreeNode(arr[midpoint]);
 		
-		// Recursively create the left and right nodes of the current node.
-		node.left = this.createBinaryTree(arr, startIndex, midpoint - 1);
-		node.right = this.createBinaryTree(arr, midpoint + 1, endIndex);
+		// Recursively create the parent, left, and right nodes of the current node.
+		node.parent = parent;
+		node.left = this.createBinaryTree(arr, startIndex, midpoint - 1, node);
+		node.right = this.createBinaryTree(arr, midpoint + 1, endIndex, node);
 	
 		return node;
 	};
@@ -38,6 +39,7 @@ class BinaryTree {
 class BinaryTreeNode {
 	constructor (value) {
 		this.value = value;
+		this.parent = null;
 		this.right = null;
 		this.left = null;
 	}
@@ -46,7 +48,13 @@ class BinaryTreeNode {
 // In order to create a binary search tree for this test case, I just need to pass in a sorted array to my BinaryTree class.
 const input1 = [1, 2, 3, 4, 5, 6, 8];
 const binaryTree1 = new BinaryTree(input1);
-// console.log(binaryTree1.root);
+// console.log(binaryTree1.root); // Expect: Parent: null.
+// console.log(binaryTree1.root.left); // Expect: Parent: BinaryTreeNode(4).
+// console.log(binaryTree1.root.left.left); // Expect: Parent: BinaryTreeNode(2).
+// console.log(binaryTree1.root.left.right); // Expect: Parent: BinaryTreeNode(2).
+// console.log(binaryTree1.root.right); // Expect: Parent: BinaryTreeNode(4).
+// console.log(binaryTree1.root.right.left); // Expect: Parent: BinaryTreeNode(6).
+// console.log(binaryTree1.root.right.right); // Expect: Parent: BinaryTreeNode(6).
 // Root: 4
 	// Left: 2
 		// Left: 1
@@ -55,7 +63,7 @@ const binaryTree1 = new BinaryTree(input1);
 		// Left: 5
 		// Right: 8
 
-console.log(successor(binaryTree1.root)); // Expect: BinaryTreeNode(6);
-console.log(successor(binaryTree1.left)); // Expect: BinaryTreeNode(3);
-console.log(successor(binaryTree1.left.right)); // Expect: BinaryTreeNode(4);
-console.log(successor(binaryTree1.right.right)); // Expect: null;
+// console.log(successor(binaryTree1.root)); // Expect: BinaryTreeNode(6);
+// console.log(successor(binaryTree1.left)); // Expect: BinaryTreeNode(3);
+// console.log(successor(binaryTree1.left.right)); // Expect: BinaryTreeNode(4);
+// console.log(successor(binaryTree1.right.right)); // Expect: null;
