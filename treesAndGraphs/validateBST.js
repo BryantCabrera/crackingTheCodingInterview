@@ -10,15 +10,17 @@ const checkBranch = (binaryTreeNode, min, max) => {
 	if (binaryTreeNode === null) return true;
 
 	// Depth-First Search with recursion.
+	// If there is a min or a max but the current node falls outside of that range, this is an invalid branch.
 	if ((min !== null && binaryTreeNode.value <= min) || (max !== null && binaryTreeNode.value > max)) {
 		return false;
 	}
 
+	// Recursively check the left branch and the right branch.
 	if ((!checkBranch(binaryTreeNode.left, min, binaryTreeNode.value) || !checkBranch(binaryTreeNode.right, binaryTreeNode.value, max))) {
 		return false;
 	}
 
-
+	// If no min and/or max is provided OR if every node passes checkBranch, this is a valid branch.
 	return true;
 };
 
