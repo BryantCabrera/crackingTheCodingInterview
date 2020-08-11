@@ -6,24 +6,10 @@ const validateBST = (binaryTreeRoot) => {
 };
 
 const checkBranch = (binaryTreeNode, min, max) => {
-	// Base Case: If root is null, return null.
+	// Base Case: If root is null, return true.
 	if (binaryTreeNode === null) return true;
 
 	// Depth-First Search with recursion.
-	// const left = binaryTreeNode.left;
-	// if (min !== null && left.value <= min) {
-	// 	checkBranch(left, min, left.value);
-	// } 
-
-	// console.log(`left: ${left}`);
-
-	// const right = binaryTreeNode.right;
-	// if (max !== null && right.value > max) {
-	// 	checkBranch(right, right.value, max);
-	// } 
-
-	// console.log(`right: ${right}`);
-
 	if ((min !== null && binaryTreeNode.value <= min) || (max !== null && binaryTreeNode.value > max)) {
 		return false;
 	}
