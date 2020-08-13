@@ -30,24 +30,6 @@ const successor = (binaryTreeNode) => {
 
 		return parent;
 	}
-
-	// if (binaryTreeNode.parent === null) {
-	// 	// If the node is the root of the binary search tree, return null, which is what the parent of the root in my binary tree class is inititialized to.
-	// 	return binaryTreeNode.parent;
-	// } else if (binaryTreeNode.value <= binaryTreeNode.parent.value) {
-	// 	// If the node is to the left of its parent, the next node is the parent.
-	// 	return binaryTreeNode.parent;
-	// } else if (binaryTreeNode.value > binaryTreeNode.parent.value) {
-	// 	if (binaryTreeNode.right !== null) {
-	// 		// If the node is to the right of its parent, the next node is the current node's right child.
-	// 		return binaryTreeNode.right;
-	// 	} else {
-	// 		// if (binaryTreeNode.parent.value <  binaryTreeNode.parent.parent.value) {
-	// 			// If the node is to the right of its parent, but does not have a right child of its own, the next node is the parent's parent.
-	// 			return binaryTreeNode.parent.parent;
-	// 		// } 
-	// 	}
-	// }
 };
 
 // Implements a binary tree.
