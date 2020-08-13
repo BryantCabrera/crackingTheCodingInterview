@@ -73,5 +73,3 @@ graph1.addEdge('C', 'F');
 // E -> F C 
 // F -> 
 graph1.printGraph(); 
-
-export const graph1;
