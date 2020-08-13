@@ -87,7 +87,7 @@ const binaryTree1 = new BinaryTree(input1);
 		// Left: 5
 		// Right: 8
 
-console.log(successor(binaryTree1.root)); // Expect: BinaryTreeNode(6);
-console.log(successor(binaryTree1.root.left)); // Expect: BinaryTreeNode(4);
+console.log(successor(binaryTree1.root)); // Expect: BinaryTreeNode(5);
+console.log(successor(binaryTree1.root.left)); // Expect: BinaryTreeNode(3);
 console.log(successor(binaryTree1.root.left.right)); // Expect: BinaryTreeNode(4);
 console.log(successor(binaryTree1.root.right.right)); // Expect: null;
