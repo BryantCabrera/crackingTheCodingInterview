@@ -1,9 +1,53 @@
 // 4.6 Successor: Write an algorithm to find the "next" node (i.e., in-order successor) of a given node in a binary search tree.  You may assume that each node has a link to its parent.
 
-const successor = () => {
+const successor = (binaryTreeNode) => {
 	// In-Order Traversal is LCR (Left Node -> Current/Parent Node -> Right Node).
 
+	console.log(`currentNode: ${binaryTreeNode.value}`);
 
+	// If the node in the argument is null, there is no next node.
+	if (binaryTreeNode === null) return null;
+
+
+	if (binaryTreeNode.right !== null) {
+		// If the node is to the right of its parent, the next node is the current node's right subtree's leftmost child.
+		let currentNode = binaryTreeNode.right;
+		while (currentNode.left !== null) {
+			currentNode = currentNode.left;
+		}
+
+		return currentNode;
+	} else {
+		// If the node does not have a right subtree, determine if it is a left node or right node.
+		let current = binaryTreeNode;
+		let parent = binaryTreeNode.parent;
+
+		// If the current node's parent exists and it is the right child, the next node will be the parent's parent, etc.
+		while (parent !== null && parent.left.value !== current.value) {
+			current = parent;
+			parent = parent.parent;
+		}
+
+		return parent;
+	}
+
+	// if (binaryTreeNode.parent === null) {
+	// 	// If the node is the root of the binary search tree, return null, which is what the parent of the root in my binary tree class is inititialized to.
+	// 	return binaryTreeNode.parent;
+	// } else if (binaryTreeNode.value <= binaryTreeNode.parent.value) {
+	// 	// If the node is to the left of its parent, the next node is the parent.
+	// 	return binaryTreeNode.parent;
+	// } else if (binaryTreeNode.value > binaryTreeNode.parent.value) {
+	// 	if (binaryTreeNode.right !== null) {
+	// 		// If the node is to the right of its parent, the next node is the current node's right child.
+	// 		return binaryTreeNode.right;
+	// 	} else {
+	// 		// if (binaryTreeNode.parent.value <  binaryTreeNode.parent.parent.value) {
+	// 			// If the node is to the right of its parent, but does not have a right child of its own, the next node is the parent's parent.
+	// 			return binaryTreeNode.parent.parent;
+	// 		// } 
+	// 	}
+	// }
 };
 
 // Implements a binary tree.
@@ -63,7 +107,7 @@ const binaryTree1 = new BinaryTree(input1);
 		// Left: 5
 		// Right: 8
 
-// console.log(successor(binaryTree1.root)); // Expect: BinaryTreeNode(6);
-// console.log(successor(binaryTree1.left)); // Expect: BinaryTreeNode(3);
-// console.log(successor(binaryTree1.left.right)); // Expect: BinaryTreeNode(4);
-// console.log(successor(binaryTree1.right.right)); // Expect: null;
+console.log(successor(binaryTree1.root)); // Expect: BinaryTreeNode(6);
+console.log(successor(binaryTree1.root.left)); // Expect: BinaryTreeNode(4);
+console.log(successor(binaryTree1.root.left.right)); // Expect: BinaryTreeNode(4);
+console.log(successor(binaryTree1.root.right.right)); // Expect: null;
