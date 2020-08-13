@@ -3,8 +3,6 @@
 const successor = (binaryTreeNode) => {
 	// In-Order Traversal is LCR (Left Node -> Current/Parent Node -> Right Node).
 
-	console.log(`currentNode: ${binaryTreeNode.value}`);
-
 	// If the node in the argument is null, there is no next node.
 	if (binaryTreeNode === null) return null;
 
