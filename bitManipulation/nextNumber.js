@@ -4,5 +4,5 @@ const nextNumber = (int) => {
 
 };
 
-const input1 = 0b100101;
+const input1 = 0b100101; // 37 in base 10.
 console.log(nextNumber(input1));
