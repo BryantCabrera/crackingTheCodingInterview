@@ -1,7 +1,17 @@
 // 4.7 Build Order: You are given a list of projects and a list of dependencies (which is a list of pairs of projects, where the first project is dependent on the second project).  All of a project's dependencies must be built before the project is.  Find a build order that will allow the projects to be built.  If there is no valid build order, return an error.
 
-const buildOrder = () => {
+const buildOrder = (directedGraph) => {
+	const order = [];
 
+	console.log(`values: ${directedGraph.adjList.values()}`);
+	const keys = directedGraph.adjList.keys();
+
+	for (const key of keys) {
+		// if (!directedGraph.adjList.values().includes(key)) {
+		// 	order.push(key);
+		// }
+		console.log(`${key}: ${order}`);
+	}
 };
 
 // Create a directed graph class.
@@ -61,20 +71,20 @@ for (let i = 0; i < vertices.length; i++) {
 } 
   
 // Add edges. 
-graph1.addEdge('D', 'A'); 
-graph1.addEdge('B', 'F'); 
-graph1.addEdge('D', 'B'); 
-graph1.addEdge('A', 'F'); 
-graph1.addEdge('C', 'D'); 
+graph1.addEdge('A', 'D'); 
+graph1.addEdge('F', 'B'); 
+graph1.addEdge('B', 'D'); 
+graph1.addEdge('F', 'A'); 
+graph1.addEdge('D', 'C'); 
   
 // Print all vertices and each of their corresponding adjacency lists.
 // Expect:  
-// A -> F 
-// B -> F
-// C -> D 
-// D -> A B 
+// A -> D 
+// B -> D
+// C ->  
+// D -> C
 // E ->
-// F -> 
+// F -> B A
 graph1.printGraph(); 
 
-console.log(buildOrder(graph1));
+console.log(buildOrder(graph1)); // Expect: F, E, A, B, D, C
