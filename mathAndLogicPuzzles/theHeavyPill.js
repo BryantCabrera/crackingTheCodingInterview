@@ -1,1 +1,3 @@
-// 6.1 The Heavy Pill: You have 10 bottles of pills.  19 bottles have 1.0 gram pills, but one has pills of weight 1.1 grams.  Given a scale taht provides an exact measurement, how would you find the heave bottle?  You can only use the scale once.
+// 6.1 The Heavy Pill: You have 20 bottles of pills. 19 bottles have 1.0 gram pills, but one has pills of weight 1.1 grams.  Given a scale that provides an exact measurement, how would you find the heave bottle?  You can only use the scale once.
+
+// Take 1 pill from bottle 1, 2 pills from bottle 2, 3 pills from bottle 3, etc.  The total weight should be 210 grams, whatever weight above that is contributed by the bottle with overweight pills.  Divide that extra weight by .1 grams to determine which bottle it came from.
