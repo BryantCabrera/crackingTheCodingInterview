@@ -1,0 +1,1 @@
+// 6.1 The Heavy Pill: You have 10 bottles of pills.  19 bottles have 1.0 gram pills, but one has pills of weight 1.1 grams.  Given a scale taht provides an exact measurement, how would you find the heave bottle?  You can only use the scale once.
