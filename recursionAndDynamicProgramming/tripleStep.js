@@ -19,19 +19,11 @@ const tripleStep = (lengthOfStairs) => {
 	};
 
 	return countPaths(lengthOfStairs, memo);
-	// return memo[memo.length - 1];
-
-	// for (let i = 1; i <= 3; i++) {
-	// 	if (lengthOfStairs >= i) {
-	// 		tripleStep(lengthOfStairs - i, counter);
-	// 	} else if (lengthOfStairs === 0) {
-	// 		counter += 1;
-	// 		return;
-	// 	}
-	// }
-
-	// return counter;
 };
+
+console.log(tripleStep(0)); // Expect: 1.
+
+console.log(tripleStep(1)); // Expect: 1.
 
 console.log(tripleStep(3)); // Expect: 4.
 // Possible combinations
