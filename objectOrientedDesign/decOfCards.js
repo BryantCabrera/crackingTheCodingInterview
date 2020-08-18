@@ -102,7 +102,7 @@ class Hand {
 class BlackJackHand extends Hand {
 	constructor () {
 		this.busted = false; // Status of current hand.
-		this.blackJack = false; // If hand is black jack.
+		this.isBlackJack = false; // If hand is black jack.
 	}
 
 	// Determines if hand is busted.
@@ -113,7 +113,7 @@ class BlackJackHand extends Hand {
 	// Determines score based on Black Jack scoring.
 	determineBlackJack () {
 		if (this.score === 21 && this.cards.includes('A') && this.cards.includes('J')) {
-			this.blackJack = true;
+			this.isBlackJack = true;
 		}
 	}
 }
