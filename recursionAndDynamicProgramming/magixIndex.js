@@ -1,11 +1,30 @@
 // 8.3 Magic Index: A magic index in an array A[0...n - 1] is defined to be an index such that A[i] = i.  Given a sorted array of distinct integers, write a method to find a magic index, if one exists, in array A.
 
-// const magicIndex1 = (sortedArrWithDistinctInts) => {
+const magicIndex1 = (sortedArrWithDistinctInts) => {
+	const findMagicIndex = (arr, startIndex, endIndex) => {
+		if (endIndex < startIndex) return null;
 
-// };
+		const midpoint = Math.floor((endIndex - startIndex) / 2);
+
+		if (arr[midpoint] === midpoint) {
+			// If the arr[i] is i, we have found our magic index.
+			return arr[midpoint];
+		} else if (arr[midpoint] > midpoint) {
+			// If arr[i] is greater than i, we have to search the left of the arr.
+			return findMagicIndex(arr, startIndex, midpoint - 1);
+		} else if (arr[midpoint] < midpoint) {
+			// If arr[i] is less than i, we have to search the right of the arr.
+			return findMagicIndex(arr, midpoint + 1, endIndex);
+		}
+	};
+
+	if (sortedArrWithDistinctInts === null) return null;
+
+	return findMagicIndex(sortedArrWithDistinctInts, 0, sortedArrWithDistinctInts.length - 1);
+};
 
 // Brute Force Solution
-const magicIndex1 = (sortedArrWithDistinctInts) => {
+const magicIndex1a = (sortedArrWithDistinctInts) => {
 	for (let i = 0; i <  sortedArrWithDistinctInts.length; i++) {
 		if (sortedArrWithDistinctInts[i] === i) {
 			return i;
