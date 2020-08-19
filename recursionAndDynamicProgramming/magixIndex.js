@@ -41,15 +41,17 @@ const magicIndex2 = (sortedArrWithNonDistinctInts) => {
 		if (endIndex < startIndex) return null;
 
 		const midpoint = Math.floor((endIndex + startIndex) / 2);
-		console.log(`startIndex: ${startIndex}, endIndex: ${endIndex}, midpoint: ${midpoint}, left: ${Math.min(arr[midpoint], midpoint - 1)}`);
 
 		if (arr[midpoint] === midpoint) {
 			// If the arr[i] is i, we have found our magic index.
 			return arr[midpoint];
 		} else if (arr[midpoint] < midpoint) {
-			console.log(`left: ${Math.min(arr[midpoint], midpoint - 1)}`);
+			// If arr[i] is less than [i], there could be a value to the left of i that is the magic index.
+			// Our next index to start searching will be the min of index right before i or arr[i].
 			return findMagicIndex(arr, startIndex, Math.min(arr[midpoint], midpoint - 1));
 		} else if (arr[midpoint] > midpoint) {
+			// If arr[i] is greater than [i], there could be a value to the right of i that is the magic index.
+			// Our next index to start searching will be the max of index right after i or arr[i].
 			return findMagicIndex(arr, Math.max(arr[midpoint], midpoint + 1), endIndex);
 		}
 	};
