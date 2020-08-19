@@ -2,11 +2,12 @@
 
 const robotInAGrid = (grid) => {
 	const getPath = (entireGrid, row, col, path) => {
-		// If we are not withint the grid, this is not a valid path.
+		// If we are not within the grid, this is not a valid path.
 		if (col < 0 || row < 0 || !entireGrid[row][col]) return false;
 
 		// If we are at the origin or there is a validPath from current cell to the cell in the next row OR the cell in the next column, this is a valid path.
 		if ((row === 0 &&  col === 0) || getPath(entireGrid, row - 1, col, path) || getPath(entireGrid, row, col - 1, path)) {
+			// Save this path.
 			path.push([row, col]);
 			return true;
 		}
@@ -18,8 +19,11 @@ const robotInAGrid = (grid) => {
 	// If the grid is not valid, there is no valid path.
 	if (grid === null || grid.length === 0) return null;
 
+	// Initialize a valid path array.
 	const validPath = [];
 
+	// Recursively traverse the grid to find a valid path.
+	// We are starting from the bottom right (end point) of the grid.
 	if (getPath(grid, grid.length - 1, grid[0].length - 1, validPath)) {
 		return validPath;
 	}
@@ -32,4 +36,5 @@ const input1 = [
 	[1, 1, 0], 
 	[0, 1, 1]
 ];
-console.log(robotInAGrid(input1)); // Expect: ['down', 'right', 'down', 'right'], ['right', 'down', 'down', 'right'];
+console.log(robotInAGrid(input1)); // Expect: [ [ 0, 0 ], [ 0, 1 ], [ 1, 1 ], [ 2, 1 ], [ 2, 2 ] ].
+//  This translates to: ['down', 'right', 'down', 'right'], ['right', 'down', 'down', 'right'].
