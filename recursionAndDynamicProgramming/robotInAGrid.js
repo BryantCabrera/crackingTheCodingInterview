@@ -14,7 +14,7 @@ const robotInAGrid = (grid) => {
 
 		let isValidPath = false;
 
-		// If we are at the origin OR there is a validPath from current cell to the cell in the next row OR the cell in the next column, this is a valid path.
+		// If we are at the origin OR there is a validPath from the start to my current cell OR the cell in the next column, this is a valid path.
 		if ((row === 0 &&  col === 0) || getPath(entireGrid, row - 1, col, path, hashMap) || getPath(entireGrid, row, col - 1, path, hashMap)) {
 			// Save this path.
 			path.push(currentCell);
@@ -22,7 +22,7 @@ const robotInAGrid = (grid) => {
 		}
 
 		hashMap.set(currentCell, isValidPath);
-		
+
 		return isValidPath;
 	};
 
@@ -50,7 +50,7 @@ const robotInAGrid2 = (grid) => {
 		// If we are not within the grid, this is not a valid path.
 		if (col < 0 || row < 0 || !entireGrid[row][col]) return false;
 
-		// If we are at the origin OR there is a validPath from current cell to the cell in the next row OR the cell in the next column, this is a valid path.
+		// If we are at the origin OR there is a validPath from the start to the current cell OR the cell in the next column, this is a valid path.
 		if ((row === 0 &&  col === 0) || getPath(entireGrid, row - 1, col, path) || getPath(entireGrid, row, col - 1, path)) {
 			// Save this path.
 			path.push([row, col]);
